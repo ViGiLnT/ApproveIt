@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApproveIt", "ApproveIt\ApproveIt.csproj", "{37ED8BED-BC41-416C-8655-2A0E51BEEC49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Binaries", "Binaries", "{422B92C2-1342-4BA0-8BCA-CA1F421D42AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Umbraco", "Umbraco", "{19D97209-1C3E-40E3-AA6A-998B50124CD7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.2", "7.2", "{39A3A377-007D-4DA6-A154-6D28F8314DC6}"
+	ProjectSection(SolutionItems) = preProject
+		Binaries\Umbraco\7.2\businesslogic.dll = Binaries\Umbraco\7.2\businesslogic.dll
+		Binaries\Umbraco\7.2\interfaces.dll = Binaries\Umbraco\7.2\interfaces.dll
+		Binaries\Umbraco\7.2\System.Web.Helpers.dll = Binaries\Umbraco\7.2\System.Web.Helpers.dll
+		Binaries\Umbraco\7.2\System.Web.Http.dll = Binaries\Umbraco\7.2\System.Web.Http.dll
+		Binaries\Umbraco\7.2\System.Web.Mvc.dll = Binaries\Umbraco\7.2\System.Web.Mvc.dll
+		Binaries\Umbraco\7.2\System.Web.Razor.dll = Binaries\Umbraco\7.2\System.Web.Razor.dll
+		Binaries\Umbraco\7.2\System.Web.WebPages.Deployment.dll = Binaries\Umbraco\7.2\System.Web.WebPages.Deployment.dll
+		Binaries\Umbraco\7.2\System.Web.WebPages.dll = Binaries\Umbraco\7.2\System.Web.WebPages.dll
+		Binaries\Umbraco\7.2\System.Web.WebPages.Razor.dll = Binaries\Umbraco\7.2\System.Web.WebPages.Razor.dll
+		Binaries\Umbraco\7.2\Umbraco.Core.dll = Binaries\Umbraco\7.2\Umbraco.Core.dll
+		Binaries\Umbraco\7.2\umbraco.dll = Binaries\Umbraco\7.2\umbraco.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PackageActionsContrib", "PackageActionsContrib", "{06B02DB0-303C-4C43-8C1F-03B524A830AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0.7", "1.0.7", "{F5298B74-CE6F-498B-A615-452D484D2517}"
+	ProjectSection(SolutionItems) = preProject
+		Binaries\PackageActionsContrib\1.0.7\PackageActionsContrib.dll = Binaries\PackageActionsContrib\1.0.7\PackageActionsContrib.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7D70C2CE-B447-497C-9F42-A88EEB3C9DEC}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://sisyphus:8080/tfs/create%20it
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ApproveIt\\ApproveIt.csproj
+		SccProjectName1 = ApproveIt
+		SccLocalPath1 = ApproveIt
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37ED8BED-BC41-416C-8655-2A0E51BEEC49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37ED8BED-BC41-416C-8655-2A0E51BEEC49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37ED8BED-BC41-416C-8655-2A0E51BEEC49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37ED8BED-BC41-416C-8655-2A0E51BEEC49}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{19D97209-1C3E-40E3-AA6A-998B50124CD7} = {422B92C2-1342-4BA0-8BCA-CA1F421D42AA}
+		{39A3A377-007D-4DA6-A154-6D28F8314DC6} = {19D97209-1C3E-40E3-AA6A-998B50124CD7}
+		{06B02DB0-303C-4C43-8C1F-03B524A830AF} = {422B92C2-1342-4BA0-8BCA-CA1F421D42AA}
+		{F5298B74-CE6F-498B-A615-452D484D2517} = {06B02DB0-303C-4C43-8C1F-03B524A830AF}
+	EndGlobalSection
+EndGlobal

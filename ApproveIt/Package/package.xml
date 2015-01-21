@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>Create.Plugin.ApproveIt.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>Create.Plugin.ApproveIt.dll</orgName>
+    </file>
+    <file>
+      <guid>approval.resource.js</guid>
+      <orgPath>/App_Plugins/ApproveIt</orgPath>
+      <orgName>approval.resource.js</orgName>
+    </file>
+    <file>
+      <guid>package.manifest</guid>
+      <orgPath>/App_Plugins/ApproveIt</orgPath>
+      <orgName>package.manifest</orgName>
+    </file>
+    <file>
+      <guid>edit.controller.js</guid>
+      <orgPath>/App_Plugins/ApproveIt/backoffice/approvalTree</orgPath>
+      <orgName>edit.controller.js</orgName>
+    </file>
+    <file>
+      <guid>edit.html</guid>
+      <orgPath>/App_Plugins/ApproveIt/backoffice/approvalTree</orgPath>
+      <orgName>edit.html</orgName>
+    </file>
+    <file>
+      <guid>approveItdashboardintro.html</guid>
+      <orgPath>/Umbraco/Views/dashboard/approveIt</orgPath>
+      <orgName>approveItdashboardintro.html</orgName>
+    </file>
+    <file>
+      <guid>PackageActionsContrib.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>PackageActionsContrib.dll</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>ApproveIt</name>
+      <version>0.1</version>
+      <license url="http://opensource.org/licenses/MIT">MIT License</license>
+      <url>http://www.create.pt</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>|create|it|</name>
+      <website>http://www.create.pt</website>
+    </author>
+    <readme><![CDATA[Approve It
+
+Creates a section that shows all the content that is waiting approval for publishing.]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <Actions>
+    <Action runat="install" undo="true" alias="addDashboardSection" dashboardAlias="StartupApproveItDashboardSection">
+      <section>
+        <areas>
+          <area>approveIt</area>
+        </areas>
+        <tab caption="Get Started">
+          <control showOnce="true" addPanel="true" panelCaption="">
+        views/dashboard/approveIt/approveItdashboardintro.html
+      </control>
+        </tab>
+      </section>
+    </Action>
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="en" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="pt" position="end" area="sections" key="approveIt" value="Approve It" />
+  </Actions>
+</umbPackage>
