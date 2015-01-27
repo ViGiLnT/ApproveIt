@@ -22,6 +22,12 @@
     [PluginController("ApproveIt")]
     public class ApprovalTreeController : TreeController
     {
+        /// <summary>
+        /// Gets the tree nodes.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="queryStrings">The query strings.</param>
+        /// <returns>The content for approval tree collection.</returns>
         protected override TreeNodeCollection GetTreeNodes(string id, FormDataCollection queryStrings)
         {
             var ctrl = new ApprovalApiController();
@@ -49,6 +55,12 @@
             return nodes;
         }
 
+        /// <summary>
+        /// Gets the menu for node.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="queryStrings">The query strings.</param>
+        /// <returns>The menu items.</returns>
         protected override MenuItemCollection GetMenuForNode(string id, FormDataCollection queryStrings)
         {
             var menu = new MenuItemCollection();
