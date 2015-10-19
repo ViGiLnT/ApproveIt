@@ -164,16 +164,3 @@ C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\System.Web.WebPages.dll
 C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\System.Web.WebPages.Razor.dll
 C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\Umbraco.Core.dll
 C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\umbraco.dll
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\AutoMapper.dll
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\ICSharpCode.SharpZipLib.dll
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\TidyNet.dll
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\Newtonsoft.Json.dll
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\CookComputing.XmlRpcV2.dll
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\Lucene.Net.dll
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\log4net.dll
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\MiniProfiler.dll
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\AutoMapper.xml
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\Newtonsoft.Json.xml
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\Lucene.Net.xml
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\MiniProfiler.pdb
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\MiniProfiler.xml
