@@ -17,7 +17,22 @@ Actions to be added to the package:
     </section>
 </Action>
 <Action runat="install" undo="true" alias="AddLanguageFileKey" language="en" position="end" area="sections" key="approveIt" value="Approve It" />
-<Action runat="install" undo="true" alias="AddLanguageFileKey" language="pt" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="pt" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="cs" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="da" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="en_us" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="es" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="fr" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="he" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="it" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="ja" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="ko" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="nl" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="no" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="pl" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="ru" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="sv" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="zh" position="end" area="sections" key="approveIt" value="Approve It" />
 ```
 
 When the dll is deployed, and Umbraco is first run, Umbraco creates the following content:

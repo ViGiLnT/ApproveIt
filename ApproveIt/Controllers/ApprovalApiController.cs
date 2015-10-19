@@ -23,12 +23,13 @@
         /// <value>
         /// The content of the unpublished.
         /// </value>
-        public IList<IContent> UnpublishedContent { get; set; }
+        private IList<IContent> UnpublishedContent { get; set; }
 
         /// <summary>
         /// Gets all.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="user">The user.</param>
+        /// <returns>The content nodes waiting for approval.</returns>
         public IEnumerable<IContent> GetAll(IUser user)
         {
             UnpublishedContent = new List<IContent>();
@@ -43,6 +44,34 @@
             return UnpublishedContent;
         }
 
+        /// <summary>
+        /// Gets the by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>The content node.</returns>
+        public IContent GetById(int id)
+        {
+            IContent content = ApplicationContext.Services.ContentService.GetById(id);
+            return content;
+        }
+
+        /// <summary>
+        /// Posts the publish.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>The content node published.</returns>
+        public IContent PostPublish(int id)
+        {
+            IContent node = ApplicationContext.Services.ContentService.GetById(id);
+            ApplicationContext.Services.ContentService.Publish(node);
+
+            return node;
+        }
+
+        /// <summary>
+        /// Recursive method to traverse all content nodes and find the unpublished ones.
+        /// </summary>
+        /// <param name="node">The node.</param>
         private void GetNode(IContent node)
         {
             if (!node.Published)
@@ -54,20 +83,6 @@
             {
                 GetNode(child);
             }
-        }
-
-        public IContent GetById(int id)
-        {
-            IContent content = ApplicationContext.Services.ContentService.GetById(id);
-            return content;
-        }
-
-        public IContent PostPublish(int id)
-        {
-            IContent node = ApplicationContext.Services.ContentService.GetById(id);
-            ApplicationContext.Services.ContentService.Publish(node);
-
-            return node;
         }
     }
 }

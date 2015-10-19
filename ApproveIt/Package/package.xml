@@ -7,6 +7,11 @@
       <orgName>Create.Plugin.ApproveIt.dll</orgName>
     </file>
     <file>
+      <guid>PackageActionsContrib.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>PackageActionsContrib.dll</orgName>
+    </file>
+    <file>
       <guid>approval.resource.js</guid>
       <orgPath>/App_Plugins/ApproveIt</orgPath>
       <orgName>approval.resource.js</orgName>
@@ -31,18 +36,13 @@
       <orgPath>/Umbraco/Views/dashboard/approveIt</orgPath>
       <orgName>approveItdashboardintro.html</orgName>
     </file>
-    <file>
-      <guid>PackageActionsContrib.dll</guid>
-      <orgPath>/bin</orgPath>
-      <orgName>PackageActionsContrib.dll</orgName>
-    </file>
   </files>
   <info>
     <package>
       <name>ApproveIt</name>
-      <version>0.1</version>
+      <version>0.1.1</version>
       <license url="http://opensource.org/licenses/MIT">MIT License</license>
-      <url>http://www.create.pt</url>
+      <url>http://our.umbraco.org/projects/backoffice-extensions/approve-it</url>
       <requirements>
         <major>3</major>
         <minor>0</minor>
@@ -55,7 +55,9 @@
     </author>
     <readme><![CDATA[Approve It
 
-Creates a section that shows all the content that is waiting approval for publishing.]]></readme>
+Creates a section that shows all the content that is waiting approval for publishing.
+
+Find the source code at: https://github.com/ViGiLnT/ApproveIt]]></readme>
   </info>
   <DocumentTypes />
   <Templates />
@@ -72,12 +74,27 @@ Creates a section that shows all the content that is waiting approval for publis
         </areas>
         <tab caption="Get Started">
           <control showOnce="true" addPanel="true" panelCaption="">
-        views/dashboard/approveIt/approveItdashboardintro.html
-      </control>
+    views/dashboard/approveIt/approveItdashboardintro.html
+    </control>
         </tab>
       </section>
     </Action>
     <Action runat="install" undo="true" alias="AddLanguageFileKey" language="en" position="end" area="sections" key="approveIt" value="Approve It" />
     <Action runat="install" undo="true" alias="AddLanguageFileKey" language="pt" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="cs" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="da" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="en_us" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="es" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="fr" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="he" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="it" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="ja" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="ko" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="nl" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="no" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="pl" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="ru" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="sv" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="zh" position="end" area="sections" key="approveIt" value="Approve It" />
   </Actions>
 </umbPackage>

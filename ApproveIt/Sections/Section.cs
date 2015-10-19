@@ -10,7 +10,7 @@
     /// <summary>
     /// Approve It section class.
     /// </summary>
-    [Application("approveIt", "ApproveIt", "icon-people", 15)]
+    [Application("approveIt", "ApproveIt", "icon-wand", 15)]
     public class Section : IApplication 
     {
     }
