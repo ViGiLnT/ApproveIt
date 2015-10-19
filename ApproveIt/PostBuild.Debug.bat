@@ -1,4 +1,4 @@
-set umbracoweb=D:\WebMatrix\Netponto
+set umbracoweb=D:\WebMatrix\ApproveIt
 
 XCOPY "%ProjectFolder%bin\%ProjectName%.*" "%umbracoweb%\bin\" /d /Y
 XCOPY "%ProjectFolder%bin\PackageActionsContrib.dll" "%umbracoweb%\bin\" /d /Y
