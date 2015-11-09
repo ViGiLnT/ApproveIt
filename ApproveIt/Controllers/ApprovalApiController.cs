@@ -5,7 +5,9 @@
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Threading;
     using System.Web.Http;
+    using Models;
     using Umbraco.Core.Models;
     using Umbraco.Core.Models.Membership;
     using Umbraco.Web.Editors;
@@ -49,10 +51,24 @@
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>The content node.</returns>
-        public IContent GetById(int id)
+        public ApproveContent GetById(int id)
         {
+            // Get content being visualized
             IContent content = ApplicationContext.Services.ContentService.GetById(id);
-            return content;
+
+            // Get the user that updated the content
+            IUser writer = ApplicationContext.Services.UserService.GetUserById(content.WriterId);
+
+            ApproveContent updatedContent = new ApproveContent()
+            {
+                Id = content.Id,
+                Name = content.Name,
+                WriterName = writer.Username,
+                WriterEmail = writer.Email,
+                UpdateDate = content.UpdateDate.ToString("F", Thread.CurrentThread.CurrentCulture)
+            };
+
+            return updatedContent;
         }
 
         /// <summary>

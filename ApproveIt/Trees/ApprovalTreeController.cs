@@ -11,6 +11,7 @@
     using Umbraco.Core;
     using Umbraco.Core.Models;
     using Umbraco.Core.Models.Membership;
+    using Umbraco.Core.Services;
     using Umbraco.Web.Models.Trees;
     using Umbraco.Web.Mvc;
     using Umbraco.Web.Trees;
@@ -68,7 +69,7 @@
             if (id == Constants.System.Root.ToInvariantString())
             {
                 // root actions              
-                menu.Items.Add<RefreshNode, ActionRefresh>(ui.Text("actions", ActionRefresh.Instance.Alias), true);
+                menu.Items.Add<RefreshNode, ActionRefresh>(ApplicationContext.Services.TextService.Localize(ActionRefresh.Instance.Alias));
             }
 
             return menu;

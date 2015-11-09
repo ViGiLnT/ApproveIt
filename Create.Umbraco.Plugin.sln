@@ -55,6 +55,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.3", "7.3", "{1A053162-53A
 		Binaries\Umbraco\7.3\umbraco.dll = Binaries\Umbraco\7.3\umbraco.dll
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.3.1", "7.3.1", "{6E39CC59-85D0-4037-B33C-7D7DEAB61E8E}"
+	ProjectSection(SolutionItems) = preProject
+		Binaries\Umbraco\7.3.1\businesslogic.dll = Binaries\Umbraco\7.3.1\businesslogic.dll
+		Binaries\Umbraco\7.3.1\cms.dll = Binaries\Umbraco\7.3.1\cms.dll
+		Binaries\Umbraco\7.3.1\interfaces.dll = Binaries\Umbraco\7.3.1\interfaces.dll
+		Binaries\Umbraco\7.3.1\System.Net.Http.Formatting.dll = Binaries\Umbraco\7.3.1\System.Net.Http.Formatting.dll
+		Binaries\Umbraco\7.3.1\System.Web.Helpers.dll = Binaries\Umbraco\7.3.1\System.Web.Helpers.dll
+		Binaries\Umbraco\7.3.1\System.Web.Http.dll = Binaries\Umbraco\7.3.1\System.Web.Http.dll
+		Binaries\Umbraco\7.3.1\System.Web.Mvc.dll = Binaries\Umbraco\7.3.1\System.Web.Mvc.dll
+		Binaries\Umbraco\7.3.1\System.Web.Razor.dll = Binaries\Umbraco\7.3.1\System.Web.Razor.dll
+		Binaries\Umbraco\7.3.1\System.Web.WebPages.Deployment.dll = Binaries\Umbraco\7.3.1\System.Web.WebPages.Deployment.dll
+		Binaries\Umbraco\7.3.1\System.Web.WebPages.dll = Binaries\Umbraco\7.3.1\System.Web.WebPages.dll
+		Binaries\Umbraco\7.3.1\System.Web.WebPages.Razor.dll = Binaries\Umbraco\7.3.1\System.Web.WebPages.Razor.dll
+		Binaries\Umbraco\7.3.1\Umbraco.Core.dll = Binaries\Umbraco\7.3.1\Umbraco.Core.dll
+		Binaries\Umbraco\7.3.1\umbraco.dll = Binaries\Umbraco\7.3.1\umbraco.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,5 +92,6 @@ Global
 		{06B02DB0-303C-4C43-8C1F-03B524A830AF} = {422B92C2-1342-4BA0-8BCA-CA1F421D42AA}
 		{F5298B74-CE6F-498B-A615-452D484D2517} = {06B02DB0-303C-4C43-8C1F-03B524A830AF}
 		{1A053162-53AE-4BD1-B0DF-2479BAA61C35} = {19D97209-1C3E-40E3-AA6A-998B50124CD7}
+		{6E39CC59-85D0-4037-B33C-7D7DEAB61E8E} = {19D97209-1C3E-40E3-AA6A-998B50124CD7}
 	EndGlobalSection
 EndGlobal

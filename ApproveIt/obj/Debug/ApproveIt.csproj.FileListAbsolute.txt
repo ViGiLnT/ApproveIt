@@ -144,7 +144,6 @@ D:\TFS-ADS\CreateIt\VTUX\2014S2\Create.Umbraco.Plugin\ApproveIt\bin\UmbracoExami
 D:\TFS-ADS\CreateIt\VTUX\2014S2\Create.Umbraco.Plugin\ApproveIt\bin\UmbracoExamine.xml
 D:\TFS-ADS\CreateIt\VTUX\2014S2\Create.Umbraco.Plugin\ApproveIt\obj\Debug\Create.Plugin.ApproveIt.dll
 D:\TFS-ADS\CreateIt\VTUX\2014S2\Create.Umbraco.Plugin\ApproveIt\obj\Debug\Create.Plugin.ApproveIt.pdb
-C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\obj\Debug\ApproveIt.csprojResolveAssemblyReference.cache
 C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\obj\Debug\Create.Plugin.ApproveIt.dll
 C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\obj\Debug\Create.Plugin.ApproveIt.pdb
 C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\Create.Plugin.ApproveIt.dll.config

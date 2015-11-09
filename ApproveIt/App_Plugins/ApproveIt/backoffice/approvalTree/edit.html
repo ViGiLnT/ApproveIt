@@ -6,25 +6,48 @@
     <umb-panel>
         <umb-header>
             <div class="span7">
-                <umb-content-name placeholder="@placeholders_entername"
-                                  ng-model="node.Name" />
+                <h1 class="umb-headline" placeholder="@placeholders_entername" ng-bind-html="node.Name" />
             </div>
-            <div class="span5">
-                <div class="btn-toolbar pull-right umb-btn-toolbar">
-                    <umb-options-menu ng-show="currentNode"
-                                      current-node="currentNode"
-                                      current-section="{{currentSection}}">
-                    </umb-options-menu>
-                </div>
-            </div>
+
+            
+
         </umb-header>
         <div class="umb-panel-body umb-scrollable row-fluid">
             <div class="tab-content form-horizontal" style="padding-bottom: 90px">
                 <div class="umb-pane">
 
-                    <umb-control-group label="Name" description="Content's name">
-                        <input type="text" class="umb-editor umb-textstring" ng-model="node.Name" required />
-                    </umb-control-group>
+                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
+                        <div class="umb-el-wrap">
+                            <label class="control-label" ng-hide="property.hideLabel">
+                                <localize key="content_nodeName">Page Title</localize>
+                            </label>
+                            <div class="controls controls-row">
+                                <span ng-bind-html="node.Name" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
+                        <div class="umb-el-wrap">
+                            <label class="control-label" ng-hide="property.hideLabel">
+                                <localize key="approveIt_updatedBy">Updated by</localize>
+                            </label>
+                            <div class="controls controls-row">
+                                <span>{{node.WriterName}}<br><small class="muted" ng-bind-html="node.WriterEmail" /></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
+                        <div class="umb-el-wrap">
+                            <label class="control-label" ng-hide="property.hideLabel">
+                                <localize key="content_updateDate">Last edited</localize>
+                            </label>
+                            <div class="controls controls-row">
+                                <span ng-bind-html="node.UpdateDate" />
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="umb-tab-buttons" detect-fold>
                         <div class="btn-group">
