@@ -408,6 +408,7 @@
     <key alias="yes">Yes</key>
     <key alias="folder">Folder</key>
     <key alias="searchResults">Search results</key>
+    <key alias="approveitupdatedBy">Editado por</key>
   </area>
   <area alias="graphicheadline">
     <key alias="backgroundcolor">Background colour</key>
@@ -1034,8 +1035,5 @@ To manage your website, simply open the Umbraco back office and start adding con
     <key alias="yourProfile" version="7.0">Your profile</key>
     <key alias="yourHistory" version="7.0">Your recent history</key>
     <key alias="sessionExpires" version="7.0">Session expires in</key>
-  </area>
-  <area alias="approveIt">
-    <key alias="updatedBy">Editado por</key>
   </area>
 </language>
