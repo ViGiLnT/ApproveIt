@@ -1,7 +1,8 @@
 ﻿angular.module("umbraco").controller("Approval.ApprovalEditController",
-	function ($scope, $routeParams, approvalResource, notificationsService, navigationService) {
+	function ($scope, $routeParams, approvalResource, notificationsService, navigationService, userService) {
 
 	    $scope.loaded = false;
+	    userService.getCurrentUser().then(function (currentUser) { $scope.user = currentUser; });;
 
 	    if ($routeParams.id == -1) {
 	        $scope.node = {};
@@ -9,7 +10,7 @@
 	    }
         else{
 	        //get a content id -> service
-	        approvalResource.getById($routeParams.id).then(function (response) {
+	        approvalResource.getById($routeParams.id, $scope.user.locale).then(function (response) {
 	            $scope.node = response.data;
 	            $scope.loaded = true;
 	        });

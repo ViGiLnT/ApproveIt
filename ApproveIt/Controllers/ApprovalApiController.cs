@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
@@ -51,7 +52,7 @@
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>The content node.</returns>
-        public ApproveContent GetById(int id)
+        public ApproveContent GetById(int id, string userLocale)
         {
             // Get content being visualized
             IContent content = ApplicationContext.Services.ContentService.GetById(id);
@@ -59,13 +60,15 @@
             // Get the user that updated the content
             IUser writer = ApplicationContext.Services.UserService.GetUserById(content.WriterId);
 
+            CultureInfo userCulture = new CultureInfo(userLocale);
+
             ApproveContent updatedContent = new ApproveContent()
             {
                 Id = content.Id,
                 Name = content.Name,
                 WriterName = writer.Username,
                 WriterEmail = writer.Email,
-                UpdateDate = content.UpdateDate.ToString("F", Thread.CurrentThread.CurrentCulture)
+                UpdateDate = content.UpdateDate.ToString("F", userCulture)
             };
 
             return updatedContent;
