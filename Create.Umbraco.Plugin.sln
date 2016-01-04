@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Binaries", "Binaries", "{422B92C2-1342-4BA0-8BCA-CA1F421D42AA}"
 EndProject
@@ -60,6 +60,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.3.1", "7.3.1", "{6E39CC59
 		Binaries\Umbraco\7.3.1\businesslogic.dll = Binaries\Umbraco\7.3.1\businesslogic.dll
 		Binaries\Umbraco\7.3.1\cms.dll = Binaries\Umbraco\7.3.1\cms.dll
 		Binaries\Umbraco\7.3.1\interfaces.dll = Binaries\Umbraco\7.3.1\interfaces.dll
+		Binaries\Umbraco\7.3.1\Newtonsoft.Json.dll = Binaries\Umbraco\7.3.1\Newtonsoft.Json.dll
 		Binaries\Umbraco\7.3.1\System.Net.Http.Formatting.dll = Binaries\Umbraco\7.3.1\System.Net.Http.Formatting.dll
 		Binaries\Umbraco\7.3.1\System.Web.Helpers.dll = Binaries\Umbraco\7.3.1\System.Web.Helpers.dll
 		Binaries\Umbraco\7.3.1\System.Web.Http.dll = Binaries\Umbraco\7.3.1\System.Web.Http.dll

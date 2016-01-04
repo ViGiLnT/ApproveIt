@@ -68,6 +68,10 @@
       <HintPath>..\Binaries\Umbraco\7.3.1\interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Binaries\Umbraco\7.3.1\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PackageActionsContrib, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\workspace\Create.Umbraco.Plugin\Binaries\PackageActionsContrib\1.0.7\PackageActionsContrib.dll</HintPath>
@@ -134,7 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ApprovalApiController.cs" />
+    <Compile Include="EventHandlers\ApproveItEventsHandler.cs" />
     <Compile Include="Models\ApproveContent.cs" />
+    <Compile Include="Pocos\ChangeHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sections\Section.cs" />
     <Compile Include="Trees\ApprovalTreeController.cs" />
