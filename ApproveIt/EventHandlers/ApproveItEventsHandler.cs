@@ -27,17 +27,17 @@
         /// <param name="applicationContext">The application context.</param>
         protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {
-            //////Get the Umbraco Database context
-            ////var db = applicationContext.DatabaseContext.Database;
+            // Get the Umbraco Database context
+            var ctx = applicationContext.DatabaseContext;
 
-            ////DatabaseSchemaHelper helper = new DatabaseSchemaHelper(db,);
+            DatabaseSchemaHelper db = new DatabaseSchemaHelper(ctx.Database, applicationContext.ProfilingLogger.Logger, ctx.SqlSyntax);
 
-            //////Check if the DB table does NOT exist
-            ////if (!db.TableExist("ChangeHistory"))
-            ////{
-            ////    //Create DB table - and set overwrite to false
-            ////    db.CreateTable<ChangeHistory>(false);
-            ////}
+            // Check if the DB table does NOT exist
+            if (!db.TableExist("approveItChangeHistory"))
+            {
+                // Create DB table - and set overwrite to false
+                db.CreateTable<ChangeHistory>(false);
+            }
 
             ContentService.SendingToPublish += SendingToPublishEventHandler;
         }
@@ -60,25 +60,40 @@
             // Fetch original content
             IContent originalContent = UmbracoContext.Current.Application.Services.ContentService.GetById(args.Entity.Id);
 
-            // Find which properties were actually changed
-            List<Property> changedProperties = new List<Property>();
+            // Get the Umbraco db
+            var db = UmbracoContext.Current.Application.DatabaseContext.Database;
 
-            IList<Property> dirtyProps = args.Entity.Properties.ToList();
-            foreach (Property dirtyProp in dirtyProps)
+            using (var scope = db.GetTransaction())
             {
-                Property originalProp = originalContent.Properties
-                    .Where(x => x.Id == dirtyProp.Id)
-                    .FirstOrDefault();
+                DateTime now = DateTime.Now;
 
-                if (originalProp != null && 
-                    originalProp.Value != null && 
-                    string.Compare(originalProp.Value.ToString(), dirtyProp.Value.ToString(), false) != 0)
+                // Find which properties were actually changed
+                IList<Property> dirtyProps = args.Entity.Properties.ToList();
+                foreach (Property dirtyProp in dirtyProps)
                 {
-                    changedProperties.Add(dirtyProp);
-                }
-            }
+                    Property originalProp = originalContent.Properties
+                        .Where(x => x.Id == dirtyProp.Id)
+                        .FirstOrDefault();
 
-            // Store the changed properties in the ChangeHistory table
+                    if (originalProp != null &&
+                        originalProp.Value != null &&
+                        string.Compare(originalProp.Value.ToString(), dirtyProp.Value.ToString(), false) != 0)
+                    {
+                        ChangeHistory newChange = new ChangeHistory();
+
+                        newChange.PropertyId = dirtyProp.Id;
+                        newChange.NodeId = args.Entity.Id;
+                        newChange.UpdateDate = now;
+                        newChange.UpdatedBy = user.Username;
+                        newChange.PreviousValue = originalProp.Value.ToString();
+                        newChange.CurrentValue = dirtyProp.Value.ToString();
+
+                        db.Insert(newChange);
+                    }
+                }
+
+                scope.Complete();
+            }
         }
     }
 }
