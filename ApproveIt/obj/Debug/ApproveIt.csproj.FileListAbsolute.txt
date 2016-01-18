@@ -164,3 +164,4 @@ C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\System.Web.WebPages.Razor.dll
 C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\Umbraco.Core.dll
 C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\umbraco.dll
 C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\bin\Newtonsoft.Json.dll
+C:\Users\ads\Source\Repos\ApproveIt\ApproveIt\obj\Debug\ApproveIt.csprojResolveAssemblyReference.cache

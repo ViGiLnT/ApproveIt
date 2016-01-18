@@ -10,7 +10,7 @@
     /// <summary>
     /// PetaPoco class that represents the ChangeHistory DB Table
     /// </summary>
-    [TableName("approveItChangeHistory")]
+    [TableName(Settings.APPROVE_IT_CHANGE_HISTORY_TABLE)]
     [PrimaryKey("Id", autoIncrement = true)]
     [ExplicitColumns]
     public class ChangeHistory

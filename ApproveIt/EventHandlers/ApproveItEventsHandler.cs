@@ -33,7 +33,7 @@
             DatabaseSchemaHelper db = new DatabaseSchemaHelper(ctx.Database, applicationContext.ProfilingLogger.Logger, ctx.SqlSyntax);
 
             // Check if the DB table does NOT exist
-            if (!db.TableExist("approveItChangeHistory"))
+            if (!db.TableExist(Settings.APPROVE_IT_CHANGE_HISTORY_TABLE))
             {
                 // Create DB table - and set overwrite to false
                 db.CreateTable<ChangeHistory>(false);
@@ -63,6 +63,7 @@
             // Get the Umbraco db
             var db = UmbracoContext.Current.Application.DatabaseContext.Database;
 
+            // Start a transaction
             using (var scope = db.GetTransaction())
             {
                 DateTime now = DateTime.Now;
@@ -79,6 +80,7 @@
                         originalProp.Value != null &&
                         string.Compare(originalProp.Value.ToString(), dirtyProp.Value.ToString(), false) != 0)
                     {
+                        // Creates a new change history table item
                         ChangeHistory newChange = new ChangeHistory();
 
                         newChange.PropertyId = dirtyProp.Id;
@@ -92,6 +94,7 @@
                     }
                 }
 
+                // Commit the transaction
                 scope.Complete();
             }
         }
