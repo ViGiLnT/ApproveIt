@@ -9,6 +9,7 @@
     using System.Threading;
     using System.Web.Http;
     using Models;
+    using Pocos;
     using Umbraco.Core.Models;
     using Umbraco.Core.Models.Membership;
     using Umbraco.Web.Editors;
@@ -29,22 +30,30 @@
         private IList<IContent> UnpublishedContent { get; set; }
 
         /// <summary>
-        /// Gets all.
+        /// Gets all content waiting for approval.
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns>The content nodes waiting for approval.</returns>
         public IEnumerable<IContent> GetAll(IUser user)
         {
-            UnpublishedContent = new List<IContent>();
+            // Get the Umbraco db
+            var db = ApplicationContext.DatabaseContext.Database;
 
-            IList<IContent> root = ApplicationContext.Services.ContentService.GetRootContent().ToList();
+            IList<IContent> contentList = new List<IContent>();
 
-            foreach (IContent content in root)
+            string query = string.Format("SELECT [nodeId] FROM {0} GROUP BY [nodeId]", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE);
+
+            var nodesWaitingApproval = db.Query<int>(query);
+
+            if (nodesWaitingApproval != null && nodesWaitingApproval.Count() > 0)
             {
-                GetNode(content);
+                foreach (var item in nodesWaitingApproval)
+                {
+                    contentList.Add(ApplicationContext.Services.ContentService.GetById(item));
+                }
             }
 
-            return UnpublishedContent;
+            return contentList;
         }
 
         /// <summary>
