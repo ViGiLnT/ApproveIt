@@ -39,17 +39,41 @@
             // Get the Umbraco db
             var db = ApplicationContext.DatabaseContext.Database;
 
+            // Get the nodes waiting approval
+            string query = string.Format("SELECT [nodeId] FROM {0} GROUP BY [nodeId]", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE);
+            IEnumerable<int> nodesWaitingApproval = db.Query<int>(query);
+            IList<int> nodesToRemove = new List<int>();
             IList<IContent> contentList = new List<IContent>();
 
-            string query = string.Format("SELECT [nodeId] FROM {0} GROUP BY [nodeId]", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE);
-
-            var nodesWaitingApproval = db.Query<int>(query);
-
+            // Gets the information about the nodes
             if (nodesWaitingApproval != null && nodesWaitingApproval.Count() > 0)
             {
                 foreach (var item in nodesWaitingApproval)
                 {
-                    contentList.Add(ApplicationContext.Services.ContentService.GetById(item));
+                    IContent content = ApplicationContext.Services.ContentService.GetById(item);
+
+                    if (content != null)
+                    {
+                        contentList.Add(ApplicationContext.Services.ContentService.GetById(item));
+                    }
+                    else
+                    {
+                        // It has been removed from the content tree, add it to a list to remove it from the db
+                        if (!nodesToRemove.Contains(item))
+                        {
+                            nodesToRemove.Add(item);
+                        }
+                    }
+                }
+            }
+
+            // It has been removed from the content tree, remove every occurence from the db
+            if (nodesToRemove.Count > 0)
+            {
+                foreach (int nodeToRemove in nodesToRemove)
+                {                    
+                    string delQuery = string.Format("DELETE FROM {0} WHERE nodeId=@0", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE);
+                    db.Execute(delQuery, nodeToRemove);
                 }
             }
 
@@ -84,7 +108,7 @@
         }
 
         /// <summary>
-        /// Posts the publish.
+        /// Publishes the post.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>The content node published.</returns>
@@ -99,7 +123,7 @@
         /// <summary>
         /// Recursive method to traverse all content nodes and find the unpublished ones.
         /// </summary>
-        /// <param name="node">The node.</param>
+        /// <param name="node">The node (usually the root node).</param>
         private void GetNode(IContent node)
         {
             if (!node.Published)
