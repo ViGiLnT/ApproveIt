@@ -87,6 +87,14 @@
         /// <returns>The content node.</returns>
         public ApproveContent GetById(int id, string userLocale)
         {
+            // Get the Umbraco db
+            var db = ApplicationContext.DatabaseContext.Database;
+
+            // Gets the content being visualized from the approveit DB
+            IList<ChangeHistory> changeHistoryArray = db.Fetch<ChangeHistory>(
+                string.Format("SELECT * FROM {0} WHERE [nodeId]=@0", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE),
+                id);
+
             // Get content being visualized
             IContent content = ApplicationContext.Services.ContentService.GetById(id);
 
@@ -101,7 +109,8 @@
                 Name = content.Name,
                 WriterName = writer.Username,
                 WriterEmail = writer.Email,
-                UpdateDate = content.UpdateDate.ToString("F", userCulture)
+                UpdateDate = content.UpdateDate.ToString("F", userCulture),
+                ChangeHistory = changeHistoryArray
             };
 
             return updatedContent;

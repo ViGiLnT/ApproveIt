@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
-
+    using Pocos;
 
     /// <summary>
     /// Approve it content to approve.
@@ -50,5 +50,13 @@
         /// The update date.
         /// </value>
         public string UpdateDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the change history.
+        /// </summary>
+        /// <value>
+        /// The change history.
+        /// </value>
+        public IList<ChangeHistory> ChangeHistory { get; set; }
     }
 }
