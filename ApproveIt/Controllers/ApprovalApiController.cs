@@ -1,17 +1,13 @@
 ﻿namespace Create.Plugin.ApproveIt.Controllers
 {
-    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
-    using System.Threading;
-    using System.Web.Http;
     using Models;
     using Pocos;
     using Umbraco.Core.Models;
     using Umbraco.Core.Models.Membership;
+    using Umbraco.Core.Persistence;
     using Umbraco.Web.Editors;
     using Umbraco.Web.Mvc;
 
@@ -21,6 +17,8 @@
     [PluginController("ApproveIt")]
     public class ApprovalApiController : UmbracoAuthorizedJsonController
     {
+        #region Private Props
+
         /// <summary>
         /// Gets or sets the content of the unpublished.
         /// </summary>
@@ -29,12 +27,16 @@
         /// </value>
         private IList<IContent> UnpublishedContent { get; set; }
 
+        #endregion
+
+        #region Public Methods
+
         /// <summary>
         /// Gets all content waiting for approval.
         /// </summary>
         /// <param name="user">The user.</param>
-        /// <returns>The content nodes waiting for approval.</returns>
-        public IEnumerable<IContent> GetAll(IUser user)
+        /// <returns>The content nodes waiting for approval and their changeHistory.</returns>
+        public IList<ApproveContent> GetAll(IUser user)
         {
             // Get the Umbraco db
             var db = ApplicationContext.DatabaseContext.Database;
@@ -42,42 +44,47 @@
             // Get the nodes waiting approval
             string query = string.Format("SELECT [nodeId] FROM {0} GROUP BY [nodeId]", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE);
             IEnumerable<int> nodesWaitingApproval = db.Query<int>(query);
+
+            // Get the node properties waiting approval
+            IList<ChangeHistory> dirtyProps = db.Fetch<ChangeHistory>(
+                string.Format("SELECT * FROM {0}", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE));
+
+            // Build the content and dirty properties structure
+            IList<ApproveContent> contentForApproval = new List<ApproveContent>();
+
+            // Start the nodes to remove list
             IList<int> nodesToRemove = new List<int>();
-            IList<IContent> contentList = new List<IContent>();
 
-            // Gets the information about the nodes
-            if (nodesWaitingApproval != null && nodesWaitingApproval.Count() > 0)
+            foreach (int nodeId in nodesWaitingApproval)
             {
-                foreach (var item in nodesWaitingApproval)
+                IContent content = ApplicationContext.Services.ContentService.GetById(nodeId);
+
+                if (content != null)
                 {
-                    IContent content = ApplicationContext.Services.ContentService.GetById(item);
+                    IList<ChangeHistory> contentDirtyProps = dirtyProps.Where(x => x.NodeId == nodeId).ToList();
+                    ApproveContent appContent = new ApproveContent()
+                    {
+                        Id = content.Id,
+                        Name = content.Name,
+                        ChangeHistory = contentDirtyProps
+                    };
 
-                    if (content != null)
+                    contentForApproval.Add(appContent);
+                }
+                else
+                {
+                    // It has been removed from the content tree, add it to a list to remove it from the db
+                    if (!nodesToRemove.Contains(nodeId))
                     {
-                        contentList.Add(ApplicationContext.Services.ContentService.GetById(item));
-                    }
-                    else
-                    {
-                        // It has been removed from the content tree, add it to a list to remove it from the db
-                        if (!nodesToRemove.Contains(item))
-                        {
-                            nodesToRemove.Add(item);
-                        }
+                        nodesToRemove.Add(nodeId);
                     }
                 }
             }
 
-            // It has been removed from the content tree, remove every occurence from the db
-            if (nodesToRemove.Count > 0)
-            {
-                foreach (int nodeToRemove in nodesToRemove)
-                {                    
-                    string delQuery = string.Format("DELETE FROM {0} WHERE nodeId=@0", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE);
-                    db.Execute(delQuery, nodeToRemove);
-                }
-            }
+            // Removes the nodes that are no longer present in the BO
+            RemoveNodesFromDB(db, nodesToRemove);
 
-            return contentList;
+            return contentForApproval;
         }
 
         /// <summary>
@@ -87,6 +94,14 @@
         /// <returns>The content node.</returns>
         public ApproveContent GetById(int id, string userLocale)
         {
+            // Get the Umbraco db
+            var db = ApplicationContext.DatabaseContext.Database;
+
+            // Gets the content being visualized from the approveit DB
+            IList<ChangeHistory> changeHistoryArray = db.Fetch<ChangeHistory>(
+                string.Format("SELECT * FROM {0} WHERE [nodeId]=@0", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE),
+                id);
+
             // Get content being visualized
             IContent content = ApplicationContext.Services.ContentService.GetById(id);
 
@@ -102,8 +117,7 @@
                 WriterName = writer.Username,
                 WriterEmail = writer.Email,
                 UpdateDate = content.UpdateDate.ToString("F", userCulture),
-                CurrentValue = "In the area of East Los Angeles, in 1982, ",
-                PreviousValue = "In the area of East Los Angeles, California, in 1982"
+                ChangeHistory = changeHistoryArray
             };
 
             return updatedContent;
@@ -119,7 +133,36 @@
             IContent node = ApplicationContext.Services.ContentService.GetById(id);
             ApplicationContext.Services.ContentService.Publish(node);
 
+            // Get the Umbraco db
+            var db = ApplicationContext.DatabaseContext.Database;
+
+            // Delete the occurences of this node on the db
+            string delQuery = string.Format("DELETE FROM {0} WHERE nodeId=@0", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE);
+            db.Execute(delQuery, id);
+
             return node;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Removes the nodes from database.
+        /// </summary>
+        /// <param name="db">The database.</param>
+        /// <param name="nodesToRemove">The nodes to remove.</param>
+        private void RemoveNodesFromDB(UmbracoDatabase db, IList<int> nodesToRemove)
+        {
+            // It has been removed from the content tree, remove every occurence from the db
+            if (nodesToRemove.Count > 0)
+            {
+                foreach (int nodeToRemove in nodesToRemove)
+                {
+                    string delQuery = string.Format("DELETE FROM {0} WHERE nodeId=@0", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE);
+                    db.Execute(delQuery, nodeToRemove);
+                }
+            }
         }
 
         /// <summary>
@@ -138,5 +181,7 @@
                 GetNode(child);
             }
         }
+
+        #endregion
     }
 }

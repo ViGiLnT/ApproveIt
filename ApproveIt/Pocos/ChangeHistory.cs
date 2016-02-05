@@ -44,6 +44,15 @@
         public int PropertyId { get; set; }
 
         /// <summary>
+        /// Gets or sets the property alias.
+        /// </summary>
+        /// <value>
+        /// The property alias.
+        /// </value>
+        [Column("propertyAlias")]
+        public string PropertyAlias { get; set; }
+
+        /// <summary>
         /// Gets or sets the update date.
         /// </summary>
         /// <value>
