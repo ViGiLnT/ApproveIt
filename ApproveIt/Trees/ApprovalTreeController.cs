@@ -7,6 +7,7 @@
     using System.Web;
     using Create.Plugin.ApproveIt.Controllers;
     using Models;
+    using Pocos;
     using umbraco;
     using umbraco.BusinessLogic.Actions;
     using Umbraco.Core;
@@ -42,15 +43,38 @@
             {
                 foreach (ApproveContent content in ctrl.GetAll(user))
                 {
-                    var node = CreateTreeNode(
+                    // Add the content nodes to the root of the tree
+                    TreeNode node = CreateTreeNode(
                         content.Id.ToString(),
                         "-1",
                         queryStrings,
                         content.Name,
-                        "icon-document",
-                        false);
+                        "icon-umb-content",
+                        true);
 
                     nodes.Add(node);
+                }
+            }
+            else
+            {
+                // We're rendering the node properties
+                int level = id.Count(c => c == '-');
+
+                if (level == 0)
+                {
+                    foreach (ApproveProperty prop in ctrl.GetAllForNode(user, id))
+                    {
+                        TreeNode propNode = CreateTreeNode(
+                            prop.Alias,
+                            id,
+                            queryStrings,
+                            prop.Name,
+                            "icon-target",
+                            false,
+                            string.Format("approveIt/approvalTree/history/{0}", prop.Alias));
+
+                        nodes.Add(propNode);
+                    }
                 }
             }
 

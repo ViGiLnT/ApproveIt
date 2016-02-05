@@ -139,6 +139,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ApprovalApiController.cs" />
     <Compile Include="EventHandlers\ApproveItEventsHandler.cs" />
+    <Compile Include="Models\ApproveProperty.cs" />
     <Compile Include="Models\ApproveContent.cs" />
     <Compile Include="Pocos\ChangeHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +148,8 @@
     <Compile Include="Trees\ApprovalTreeController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\history.html" />
+    <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\history.controller.js" />
     <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\edit.controller.js" />
     <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\edit.html" />
     <Content Include="App_Plugins\ApproveIt\approval.resource.js" />
