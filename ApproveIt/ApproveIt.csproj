@@ -150,9 +150,13 @@
     <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\edit.controller.js" />
     <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\edit.html" />
     <Content Include="App_Plugins\ApproveIt\approval.resource.js" />
+    <Content Include="App_Plugins\ApproveIt\Content\pickadiff\jquery.picadiff.css" />
     <Content Include="Dashboard\Views\dashboard\approveIt\approveItdashboardintro.html" />
     <Content Include="Package\package.xml" />
     <Content Include="README.txt" />
+    <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\diff_match_patch.js" />
+    <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\diff_match_patch_extended.js" />
+    <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\picadiff.js" />
     <Content Include="Umbraco\Config\Lang\en.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

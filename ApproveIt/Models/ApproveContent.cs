@@ -50,5 +50,21 @@
         /// The update date.
         /// </value>
         public string UpdateDate { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value>
+        /// 
+        /// </value>
+        public string PreviousValue { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value>
+        /// 
+        /// </value>
+        public string CurrentValue { get; set; }
     }
 }

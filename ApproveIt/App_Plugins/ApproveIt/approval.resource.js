@@ -1,5 +1,6 @@
 ﻿angular.module("umbraco.resources")
 	.factory("approvalResource", function ($http) {
+
 	    return {
 	        getById: function (id, userLocale) {
 	            return $http.get("backoffice/ApproveIt/ApprovalApi/GetById?id=" + id + "&userLocale=" + userLocale);

@@ -101,7 +101,9 @@
                 Name = content.Name,
                 WriterName = writer.Username,
                 WriterEmail = writer.Email,
-                UpdateDate = content.UpdateDate.ToString("F", userCulture)
+                UpdateDate = content.UpdateDate.ToString("F", userCulture),
+                CurrentValue = "In the area of East Los Angeles, in 1982, ",
+                PreviousValue = "In the area of East Los Angeles, California, in 1982"
             };
 
             return updatedContent;
