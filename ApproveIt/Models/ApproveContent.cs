@@ -58,5 +58,21 @@
         /// The change history.
         /// </value>
         public IList<ChangeHistory> ChangeHistory { get; set; }
+
+        /// <summary>
+        /// Gets or sets the update date.
+        /// </summary>
+        /// <value>
+        /// The update date.
+        /// </value>
+        public string PreviousValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets the update date.
+        /// </summary>
+        /// <value>
+        /// The update date.
+        /// </value>
+        public string CurrentValue { get; set; }
     }
 }

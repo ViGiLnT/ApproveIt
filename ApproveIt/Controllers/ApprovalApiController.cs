@@ -117,7 +117,9 @@
                 WriterName = writer.Username,
                 WriterEmail = writer.Email,
                 UpdateDate = content.UpdateDate.ToString("F", userCulture),
-                ChangeHistory = changeHistoryArray
+                ChangeHistory = changeHistoryArray,
+                CurrentValue = changeHistoryArray.Select(x=> x.CurrentValue).LastOrDefault(),
+                PreviousValue = changeHistoryArray.Select(x => x.PreviousValue).FirstOrDefault(),
             };
 
             return updatedContent;
