@@ -84,6 +84,7 @@
                         ChangeHistory newChange = new ChangeHistory();
 
                         newChange.PropertyId = dirtyProp.Id;
+                        newChange.PropertyAlias = dirtyProp.Alias;
                         newChange.NodeId = args.Entity.Id;
                         newChange.UpdateDate = now;
                         newChange.UpdatedBy = user.Username;

@@ -126,6 +126,13 @@
             IContent node = ApplicationContext.Services.ContentService.GetById(id);
             ApplicationContext.Services.ContentService.Publish(node);
 
+            // Get the Umbraco db
+            var db = ApplicationContext.DatabaseContext.Database;
+
+            // Delete the occurences of this node on the db
+            string delQuery = string.Format("DELETE FROM {0} WHERE nodeId=@0", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE);
+            db.Execute(delQuery, id);
+
             return node;
         }
 
