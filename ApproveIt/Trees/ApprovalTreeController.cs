@@ -6,6 +6,7 @@
     using System.Net.Http.Formatting;
     using System.Web;
     using Create.Plugin.ApproveIt.Controllers;
+    using Models;
     using umbraco;
     using umbraco.BusinessLogic.Actions;
     using Umbraco.Core;
@@ -39,7 +40,7 @@
             //check if we're rendering the root node's children
             if (id == Constants.System.Root.ToInvariantString())
             {
-                foreach (IContent content in ctrl.GetAll(user))
+                foreach (ApproveContent content in ctrl.GetAll(user))
                 {
                     var node = CreateTreeNode(
                         content.Id.ToString(),
