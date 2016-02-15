@@ -154,6 +154,7 @@
     <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\edit.html" />
     <Content Include="App_Plugins\ApproveIt\approval.resource.js" />
     <Content Include="Dashboard\Views\dashboard\approveIt\approveItdashboardintro.html" />
+    <Content Include="Gruntfile.js" />
     <Content Include="Package\package.xml" />
     <Content Include="README.txt" />
     <Content Include="Umbraco\Config\Lang\en.xml" />
@@ -182,6 +183,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\Dashboard.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="package.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
