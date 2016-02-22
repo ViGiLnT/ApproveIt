@@ -156,7 +156,6 @@
     <Content Include="Dashboard\Views\dashboard\approveIt\approveItdashboardintro.html" />
     <Content Include="Gruntfile.js" />
     <Content Include="package.xml" />
-    <Content Include="Package\package.xml" />
     <Content Include="README.txt" />
     <Content Include="Umbraco\Config\Lang\en.xml" />
     <Content Include="Web.config" />
