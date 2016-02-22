@@ -12,7 +12,7 @@
     using Umbraco.Web.Mvc;
 
     /// <summary>
-    /// Person Api Controller.
+    /// Approval Api Controller.
     /// </summary>
     [PluginController("ApproveIt")]
     public class ApprovalApiController : UmbracoAuthorizedJsonController
