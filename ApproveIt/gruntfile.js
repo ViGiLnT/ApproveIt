@@ -9,6 +9,7 @@ module.exports = function (grunt) {
 
     // get the root path of the project
     var projectRoot = 'C:/Users/ads/Source/Repos/ApproveIt/ApproveIt/';
+    var packageNamespace = "Create.Plugin";
 
     grunt.initConfig({
         pkg: pkg,
@@ -26,8 +27,7 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: projectRoot + 'bin/',
                         src: [
-                            pkg.name + '.dll',
-                            pkg.name + '.xml',
+                            packageNamespace + '.' + pkg.name + '.dll',
                             'PackageActionsContrib.dll'
                         ],
                         dest: 'bld/bin/'

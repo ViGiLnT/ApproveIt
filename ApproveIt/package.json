@@ -13,7 +13,7 @@
     "name": "MIT",
     "url": "http://opensource.org/licenses/MIT"
   },
-  "name": "Create.Plugin.ApproveIt",
+  "name": "ApproveIt",
   "readme": "Umbraco Plugin that creates a section that shows all the content that is waiting approval for publishing.",
   "url": "https://our.umbraco.org/projects/backoffice-extensions/approve-it/",
   "version": "1.0.1"
