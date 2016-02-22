@@ -16,5 +16,5 @@
   "name": "Create.Plugin.ApproveIt",
   "readme": "Umbraco Plugin that creates a section that shows all the content that is waiting approval for publishing.",
   "url": "https://our.umbraco.org/projects/backoffice-extensions/approve-it/",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

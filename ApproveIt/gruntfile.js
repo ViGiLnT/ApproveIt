@@ -10,13 +10,13 @@ module.exports = function (grunt) {
     // get the root path of the project
     var projectRoot = 'C:/Users/ads/Source/Repos/ApproveIt/ApproveIt/';
 
-    var version = "1.0.0";
-
     grunt.initConfig({
         pkg: pkg,
         clean: {
             files: [
-                'files/*.*'
+                'bld/App_Plugins',
+                'bld/bin',
+                'bld/Umbraco'
             ]
         },
         copy: {
@@ -27,27 +27,41 @@ module.exports = function (grunt) {
                         cwd: projectRoot + 'bin/',
                         src: [
                             pkg.name + '.dll',
-                            pkg.name + '.xml'
+                            pkg.name + '.xml',
+                            'PackageActionsContrib.dll'
                         ],
-                        dest: 'files/bin/'
+                        dest: 'bld/bin/'
+                    },
+                    {
+                        expand: true,
+                        cwd: projectRoot + 'App_Plugins/',
+                        src: ['**'],
+                        dest: 'bld/App_Plugins/'
+                    },
+                    {
+                        expand: true,
+                        cwd: projectRoot + 'Dashboard/Views/dashboard/approveIt/',
+                        src: ['approveItdashboardintro.html'],
+                        dest: "bld/Umbraco/Views/dashboard/approveIt/"
                     }
                 ]
             }
         },
         umbracoPackage: {
             release: {
-                src: 'files/',
+                src: 'bld/',
                 dest: 'bin/umbraco',
                 options: {
                     name: pkg.name,
-                    version: version,
+                    version: pkg.version,
                     url: pkg.url,
                     license: pkg.license.name,
                     licenseUrl: pkg.license.url,
                     author: pkg.author.name,
                     authorUrl: pkg.author.url,
                     readme: pkg.readme,
-                    outputName: pkg.name + '.v' + version + '.zip'
+                    outputName: pkg.name + '.v' + pkg.version + '.zip',
+                    manifest: 'package.xml'
                 }
             }
         }
