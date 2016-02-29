@@ -139,6 +139,8 @@
   <ItemGroup>
     <Compile Include="Controllers\ApprovalApiController.cs" />
     <Compile Include="EventHandlers\ApproveItEventsHandler.cs" />
+    <Compile Include="Models\ContentHistory.cs" />
+    <Compile Include="Models\PropertyHistory.cs" />
     <Compile Include="Models\ApproveProperty.cs" />
     <Compile Include="Models\ApproveContent.cs" />
     <Compile Include="Pocos\ChangeHistory.cs" />

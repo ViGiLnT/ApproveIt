@@ -176,6 +176,67 @@
         }
 
         /// <summary>
+        /// Gets the node by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>The content node.</returns>
+        public ContentHistory GetNodeById(int id, string userLocale)
+        {
+            // Get the Umbraco db
+            var db = ApplicationContext.DatabaseContext.Database;
+
+            // Gets the content being visualized from the approveit DB
+            IList<ChangeHistory> changeHistoryArray = db.Fetch<ChangeHistory>(
+                string.Format("SELECT * FROM {0} WHERE [nodeId]=@0", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE),
+                id);
+
+            // Get content being visualized
+            IContent content = ApplicationContext.Services.ContentService.GetById(id);
+
+            CultureInfo userCulture = new CultureInfo(userLocale);
+
+            // Start the nodes to remove list
+            IList<int> nodesToRemove = new List<int>();
+
+            if (content != null)
+            {
+                ContentHistory currentContent = new ContentHistory()
+                {
+                    Name = content.Name,
+                    Id = content.Id,
+                    Properties = new List<PropertyHistory>()
+                };
+
+                foreach (ChangeHistory change in changeHistoryArray)
+                {
+                    // Get the user that updated the content
+                    IUser writer = ApplicationContext.Services.UserService.GetByUsername(change.UpdatedBy);
+
+                    currentContent.Properties.Add(new PropertyHistory()
+                    {
+                        Alias = change.PropertyAlias,
+                        AuthorEmail = writer.Email,
+                        AuthorName = writer.Username,
+                        ChangeDate = change.UpdateDate.ToString("F", userCulture),
+                        Id = change.Id
+                    });
+                }
+
+                return currentContent;
+            }
+            else
+            {
+                // It has been removed from the content tree, add it to a list to remove it from the db
+                if (!nodesToRemove.Contains(id))
+                {
+                    nodesToRemove.Add(id);
+                }
+
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>

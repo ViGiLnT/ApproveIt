@@ -3,7 +3,7 @@
 
 	    $scope.loaded = false;
 	    var parentId = $scope.$parent.menuNode.parentId;
-	    userService.getCurrentUser().then(function (currentUser) { $scope.user = currentUser; });;
+	    userService.getCurrentUser().then(function (currentUser) { $scope.user = currentUser; });
 
 	    if ($routeParams.id == -1) {
 	        $scope.node = {};

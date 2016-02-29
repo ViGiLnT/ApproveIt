@@ -23,48 +23,18 @@
                         </div>
                     </div>
 
-                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
+                    <div class="control-group umb-control-group" ng-repeat="prop in node.Properties" ng-class="{hidelabel:property.hideLabel}">
                         <div class="umb-el-wrap">
                             <label class="control-label" ng-hide="property.hideLabel">
-                                <localize key="general_approveitupdatedBy">Updated by</localize>
+                                {{prop.Alias}}
                             </label>
                             <div class="controls controls-row">
-                                <span>{{node.WriterName}}<br><small class="muted" ng-bind-html="node.WriterEmail" /></span>
+                                <span>{{prop.AuthorName}}<br><small class="muted" ng-bind-html="prop.AuthorEmail" /></span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
-                        <div class="umb-el-wrap">
-                            <label class="control-label" ng-hide="property.hideLabel">
-                                <localize key="content_updateDate">Last edited</localize>
-                            </label>
-                            <div class="controls controls-row">
-                                <span ng-bind-html="node.UpdateDate" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--<div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
-                        <div class="umb-el-wrap">
-                            <label class="control-label" ng-hide="property.hideLabel">
-                               Changes
-                            </label>
-                            <div class="controls controls-row">
-                                <div id="previousValue" ng-bind-html="node.PreviousValue" />
-                                <div id="currentValue" ng-bind-html="node.CurrentValue" />
-                            </div>
-                            <div class="controls controls-row">
-                                <div class="picadiff">
-                                    <div class="picadiff-content">
-                                        <div class="left" ng-bind-html="node.PreviousValue" />
-                                        <div class="right" ng-bind-html="node.CurrentValue" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
-                    <div class="umb-tab-buttons" detect-fold>   
+                    <div class="umb-tab-buttons" detect-fold>
                         <div class="btn-group">
                             <a class="btn" ng-href="#/content/content/edit/{{node.Id}}">
                                 <localize key="general_show">Show</localize>
