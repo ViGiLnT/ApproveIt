@@ -1,0 +1,10 @@
+﻿#antesDepois .right{
+    margin-left: 50%;
+    font-weight: bold;
+    color: green;
+}
+#antesDepois .left{
+    float: left;
+    font-weight: bold;
+    color: red;
+}

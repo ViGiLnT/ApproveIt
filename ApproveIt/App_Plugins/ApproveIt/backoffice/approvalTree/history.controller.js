@@ -25,5 +25,31 @@
 	            notificationsService.success("Success", node.Name + " has been published");
 	        });
 	    };
-	   
+
+	    $scope.compare = function ($event) {
+	        pickADiff($event, $scope);
+	    };
+
+	    $scope.callUpdate = function () {
+	        pickADiff($scope.node.PreviousValue, $scope.node.CurrentValue);
+	    }
 	});
+
+
+function pickADiff(prev, curr, event) {
+    
+    if (event)
+    {
+        event.preventDefault();
+    }
+
+    $('.picadiff').picadiff({
+        //leftContent: $('#previousValue').html(),
+        //rightContent: $('#currentValue').html(),
+        //leftContent: prev,
+        //rightContent: curr,
+        //lineLength: 1000,
+    });;
+
+    $(".picadiff").picadiff();
+}

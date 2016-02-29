@@ -45,20 +45,49 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="umb-tab-buttons" detect-fold>
-                        <div class="btn-group">
-                            <a class="btn" ng-href="#/content/content/edit/{{node.Id}}">
-                                <localize key="general_show">Show</localize>
-                            </a>
-                        </div>
-                        <div class="btn-group">
-                            <button type="submit" data-hotkey="ctrl+s" class="btn btn-success">
-                                <localize key="actions_publish">Publish</localize>
-                            </button>
-                        </div>
+                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
+                        <div class="umb-el-wrap">
+                            <label class="control-label" ng-hide="property.hideLabel">
+                                Changes
+                            </label>
+                            <div class="controls controls-row">
+                                <div id="antesDepois">
+                                    <div class="left">Antes</div>
+                                    <div class="right">Depois</div>
+                                </div>
+                            </div>
+                            <div class="controls controls-row">
+                                <div class="picadiff">
+                                    <div class="picadiff-content">
+                                        <div class="left" ng-bind-html="node.PreviousValue" />
+                                        <div class="right" ng-bind-html="node.CurrentValue" />
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
                     </div>
-                </div>
+                    <!--<div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
+                        <div class="controls controls-row">
+                            <div class="btn" ng-click=" compare()">Compare</div>
+                        </div>
+                    </div>-->   
+                    <p>{{callUpdate()}}</p>           
+                        <div class="umb-tab-buttons" detect-fold>
+                            <div class="btn-group">
+                                <div class="btn" ng-click=" compare()">Compare</div>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn" ng-href="#/content/content/edit/{{node.Id}}">
+                                    <localize key="general_show">Show</localize>
+                                </a>
+                            </div>
+                            <div class="btn-group">
+                                <button type="submit" data-hotkey="ctrl+s" class="btn btn-success">
+                                    <localize key="actions_publish">Publish</localize>
+                                </button>
+                            </div>
+                            </div>
+                    </div>
             </div>
         </div>
     </umb-panel>

@@ -155,6 +155,7 @@
     <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\edit.controller.js" />
     <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\edit.html" />
     <Content Include="App_Plugins\ApproveIt\approval.resource.js" />
+    <Content Include="App_Plugins\ApproveIt\Content\approve-it.css" />
     <Content Include="App_Plugins\ApproveIt\Content\pickadiff\jquery.picadiff.css" />
     <Content Include="App_Plugins\ApproveIt\Content\vertical-timeline\css\reset.css" />
     <Content Include="App_Plugins\ApproveIt\Content\vertical-timeline\css\style.css" />
