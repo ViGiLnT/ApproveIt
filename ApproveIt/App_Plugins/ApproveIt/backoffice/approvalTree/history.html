@@ -1,0 +1,69 @@
+﻿<form name="contentForm"
+      ng-controller="Approval.ApprovalHistoryController"
+      ng-show="loaded"
+      ng-submit="publish(node)"
+      val-form-manager>
+    <umb-panel>
+        <umb-header>
+            <div class="span7">
+                <h1 class="umb-headline" placeholder="@placeholders_entername" ng-bind-html="node.Name" />
+            </div>
+        </umb-header>
+        <div class="umb-panel-body umb-scrollable row-fluid">
+            <div class="tab-content form-horizontal" style="padding-bottom: 90px">
+                <div class="umb-pane">
+
+                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
+                        <div class="umb-el-wrap">
+                            <label class="control-label" ng-hide="property.hideLabel">
+                                <localize key="content_nodeName">Page Title</localize>
+                            </label>
+                            <div class="controls controls-row">
+                                <span ng-bind-html="node.Name" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
+                        <div class="umb-el-wrap">
+                            <label class="control-label" ng-hide="property.hideLabel">
+                                <localize key="general_approveitupdatedBy">Updated by</localize>
+                            </label>
+                            <div class="controls controls-row">
+                                <span>{{node.WriterName}}<br><small class="muted" ng-bind-html="node.WriterEmail" /></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
+                        <div class="umb-el-wrap">
+                            <label class="control-label" ng-hide="property.hideLabel">
+                                <localize key="content_updateDate">Last edited</localize>
+                            </label>
+                            <div class="controls controls-row">
+                                <span ng-bind-html="node.UpdateDate" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="umb-tab-buttons" detect-fold>
+                        <div class="btn-group">
+                            <a class="btn" ng-href="#/content/content/edit/{{node.Id}}">
+                                <localize key="general_show">Show</localize>
+                            </a>
+                        </div>
+                        <div class="btn-group">
+                            <button type="submit" data-hotkey="ctrl+s" class="btn btn-success">
+                                <localize key="actions_publish">Publish</localize>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </umb-panel>
+</form>
+
+
+
+

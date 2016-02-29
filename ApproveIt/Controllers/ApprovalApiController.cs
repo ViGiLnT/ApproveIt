@@ -35,7 +35,9 @@
         /// Gets all content waiting for approval.
         /// </summary>
         /// <param name="user">The user.</param>
-        /// <returns>The content nodes waiting for approval and their changeHistory.</returns>
+        /// <returns>
+        /// The content nodes waiting for approval and their changeHistory.
+        /// </returns>
         public IList<ApproveContent> GetAll(IUser user)
         {
             // Get the Umbraco db
@@ -61,12 +63,30 @@
 
                 if (content != null)
                 {
-                    IList<ChangeHistory> contentDirtyProps = dirtyProps.Where(x => x.NodeId == nodeId).ToList();
+                    string[] contentDirtyPropsAliases = dirtyProps
+                        .Where(x => x.NodeId == nodeId)
+                        .Select(x => x.PropertyAlias)
+                        .Distinct()
+                        .ToArray();
+
+                    IList<ApproveProperty> contentDirtyProps = new List<ApproveProperty>();
+
+                    foreach(string alias in contentDirtyPropsAliases)
+                    {
+                        Property prop = content.Properties.Where(x => string.Compare(x.Alias, alias, true) == 0).FirstOrDefault();
+                        contentDirtyProps.Add(new ApproveProperty()
+                        {
+                            Alias = alias,
+                            Id = prop.Id,
+                            Name = prop.PropertyType.Name
+                        });
+                    }
+
                     ApproveContent appContent = new ApproveContent()
                     {
                         Id = content.Id,
                         Name = content.Name,
-                        ChangeHistory = contentDirtyProps
+                        ChangedProperties = contentDirtyProps
                     };
 
                     contentForApproval.Add(appContent);
@@ -85,6 +105,74 @@
             RemoveNodesFromDB(db, nodesToRemove);
 
             return contentForApproval;
+        }
+
+        /// <summary>
+        /// Gets all content waiting for approval.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// The content nodes waiting for approval and their changeHistory.
+        /// </returns>
+        public IList<ApproveProperty> GetAllForNode(IUser user, string id)
+        {
+            // Get the Umbraco db
+            var db = ApplicationContext.DatabaseContext.Database;
+
+            int nodeId;
+            if (!int.TryParse(id, out nodeId))
+            {
+                return null;
+            }
+
+            // Get the node properties waiting approval
+            IList<ChangeHistory> dirtyProps = db.Fetch<ChangeHistory>(
+                string.Format("SELECT * FROM {0} WHERE [nodeId]=@0", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE),
+                id);
+
+            // Start the nodes to remove list
+            IList<int> nodesToRemove = new List<int>();
+            IList<ApproveProperty> contentDirtyProps = new List<ApproveProperty>();
+
+            if (dirtyProps != null & dirtyProps.Count >= 0)
+            {
+                IContent content = ApplicationContext.Services.ContentService.GetById(nodeId);
+
+                if (content != null)
+                {
+                    string[] contentDirtyPropsAliases = dirtyProps
+                        .Where(x => x.NodeId == nodeId)
+                        .Select(x => x.PropertyAlias)
+                        .Distinct()
+                        .ToArray();
+
+                    foreach (string alias in contentDirtyPropsAliases)
+                    {
+                        Property prop = content.Properties.Where(x => string.Compare(x.Alias, alias, true) == 0).FirstOrDefault();
+                        contentDirtyProps.Add(new ApproveProperty()
+                        {
+                            Alias = alias,
+                            Id = prop.Id,
+                            Name = prop.PropertyType.Name
+                        });
+                    }
+                }
+                else
+                {
+                    nodesToRemove.Add(nodeId);
+                }
+            }
+            else
+            {
+                // It has been removed from the content tree, add it to a list to remove it from the db
+                nodesToRemove.Add(nodeId);
+            }
+
+            // Removes the nodes that are no longer present in the BO
+            RemoveNodesFromDB(db, nodesToRemove);
+
+            return contentDirtyProps;
         }
 
         /// <summary>
@@ -116,10 +204,7 @@
                 Name = content.Name,
                 WriterName = writer.Username,
                 WriterEmail = writer.Email,
-                UpdateDate = content.UpdateDate.ToString("F", userCulture),
-                ChangeHistory = changeHistoryArray,
-                CurrentValue = changeHistoryArray.Select(x=> x.CurrentValue).LastOrDefault(),
-                PreviousValue = changeHistoryArray.Select(x => x.PreviousValue).FirstOrDefault(),
+                UpdateDate = content.UpdateDate.ToString("F", userCulture)
             };
 
             return updatedContent;

@@ -139,6 +139,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ApprovalApiController.cs" />
     <Compile Include="EventHandlers\ApproveItEventsHandler.cs" />
+    <Compile Include="Models\ApproveProperty.cs" />
     <Compile Include="Models\ApproveContent.cs" />
     <Compile Include="Pocos\ChangeHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,16 +148,14 @@
     <Compile Include="Trees\ApprovalTreeController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\history.html" />
+    <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\history.controller.js" />
     <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\edit.controller.js" />
     <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\edit.html" />
     <Content Include="App_Plugins\ApproveIt\approval.resource.js" />
-    <Content Include="App_Plugins\ApproveIt\Content\pickadiff\jquery.picadiff.css" />
     <Content Include="Dashboard\Views\dashboard\approveIt\approveItdashboardintro.html" />
     <Content Include="Package\package.xml" />
     <Content Include="README.txt" />
-    <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\diff_match_patch.js" />
-    <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\diff_match_patch_extended.js" />
-    <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\picadiff.js" />
     <Content Include="Umbraco\Config\Lang\en.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

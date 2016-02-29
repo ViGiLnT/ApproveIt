@@ -52,27 +52,11 @@
         public string UpdateDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the change history.
+        /// Gets or sets the changed properties.
         /// </summary>
         /// <value>
-        /// The change history.
+        /// The changed properties.
         /// </value>
-        public IList<ChangeHistory> ChangeHistory { get; set; }
-
-        /// <summary>
-        /// Gets or sets the update date.
-        /// </summary>
-        /// <value>
-        /// The update date.
-        /// </value>
-        public string PreviousValue { get; set; }
-
-        /// <summary>
-        /// Gets or sets the update date.
-        /// </summary>
-        /// <value>
-        /// The update date.
-        /// </value>
-        public string CurrentValue { get; set; }
+        public IList<ApproveProperty> ChangedProperties { get; set; }
     }
 }
