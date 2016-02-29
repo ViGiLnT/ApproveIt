@@ -10,7 +10,7 @@
 	    }
         else{
 	        //get a content id -> service
-	        approvalResource.getById($routeParams.id, $scope.user.locale).then(function (response) {
+	        approvalResource.getNodeById($routeParams.id, $scope.user.locale).then(function (response) {
 	            $scope.node = response.data;
 	            $scope.loaded = true;
 	        });
@@ -24,18 +24,4 @@
 	            notificationsService.success("Success", node.Name + " has been published");
 	        });
 	    };
-
-
-	    $scope.compare = function ($event) {
-	    
-	            $('.picadiff').picadiff({
-	                leftContent: $('#previousValue').text(),
-	                rightContent: $('#currentValue').text(),
-	                lineLength: 1000,
-	            });;
-
-	            $(".picadiff").picadiff();
-	            event.preventDefault();
-	    };
-	   
 	});
