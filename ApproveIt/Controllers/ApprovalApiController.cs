@@ -291,6 +291,29 @@
             return node;
         }
 
+        /// <summary>
+        /// Publishes every node waiting approval.
+        /// </summary>
+        public void PublishAll()
+        {
+            // Get the Umbraco db
+            var db = ApplicationContext.DatabaseContext.Database;
+
+            // Get the nodes waiting approval
+            string query = string.Format("SELECT [nodeId] FROM {0} GROUP BY [nodeId]", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE);
+            IEnumerable<int> nodesWaitingApproval = db.Query<int>(query);
+
+            foreach (int nodeId in nodesWaitingApproval)
+            {
+                IContent node = ApplicationContext.Services.ContentService.GetById(nodeId);
+                ApplicationContext.Services.ContentService.Publish(node);
+            }
+
+            // Delete the occurences of this node on the db
+            string delQuery = string.Format("DELETE FROM {0}", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE);
+            db.Execute(delQuery);
+        }
+
         #endregion
 
         #region Private Methods

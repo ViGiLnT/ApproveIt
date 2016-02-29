@@ -5,10 +5,11 @@
 		'~/App_Plugins/ApproveIt/approval.resource.js',
 		'~/App_Plugins/ApproveIt/Scripts/pickadiff/diff_match_patch.js',
 		'~/App_Plugins/ApproveIt/Scripts/pickadiff/diff_match_patch_extended.js',
-		'~/App_Plugins/ApproveIt/Scripts/pickadiff/picadiff.js',
+		'~/App_Plugins/ApproveIt/Scripts/pickadiff/picadiff.js'
 	],
 
 	css: [
-		'~/App_Plugins/ApproveIt/Content/pickadiff/jquery.picadiff.css'
+		'~/App_Plugins/ApproveIt/Content/pickadiff/jquery.picadiff.css',
+		'~/App_Plugins/ApproveIt/Content/vertical-timeline/css/style.css'
 	]
 }

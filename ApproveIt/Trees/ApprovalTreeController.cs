@@ -90,11 +90,18 @@
         protected override MenuItemCollection GetMenuForNode(string id, FormDataCollection queryStrings)
         {
             var menu = new MenuItemCollection();
+            var ctrl = new ApprovalApiController();
 
             if (id == Constants.System.Root.ToInvariantString())
             {
                 // root actions              
                 menu.Items.Add<RefreshNode, ActionRefresh>(ApplicationContext.Services.TextService.Localize(ActionRefresh.Instance.Alias));
+
+                ////MenuItem item = new MenuItem("publishAll", ApplicationContext.Services.TextService.Localize(ActionPublish.Instance.Alias));
+                ////item.Icon = "globe";
+                ////item.NavigateToRoute("/backoffice/ApproveIt/ApprovalApi/PublishAll");
+
+                ////menu.Items.Add(item);
             }
 
             return menu;
