@@ -1,48 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <umbPackage>
-  <files>
-    <file>
-      <guid>Create.Plugin.ApproveIt.dll</guid>
-      <orgPath>/bin</orgPath>
-      <orgName>Create.Plugin.ApproveIt.dll</orgName>
-    </file>
-    <file>
-      <guid>PackageActionsContrib.dll</guid>
-      <orgPath>/bin</orgPath>
-      <orgName>PackageActionsContrib.dll</orgName>
-    </file>
-    <file>
-      <guid>approval.resource.js</guid>
-      <orgPath>/App_Plugins/ApproveIt</orgPath>
-      <orgName>approval.resource.js</orgName>
-    </file>
-    <file>
-      <guid>package.manifest</guid>
-      <orgPath>/App_Plugins/ApproveIt</orgPath>
-      <orgName>package.manifest</orgName>
-    </file>
-    <file>
-      <guid>edit.controller.js</guid>
-      <orgPath>/App_Plugins/ApproveIt/backoffice/approvalTree</orgPath>
-      <orgName>edit.controller.js</orgName>
-    </file>
-    <file>
-      <guid>edit.html</guid>
-      <orgPath>/App_Plugins/ApproveIt/backoffice/approvalTree</orgPath>
-      <orgName>edit.html</orgName>
-    </file>
-    <file>
-      <guid>approveItdashboardintro.html</guid>
-      <orgPath>/Umbraco/Views/dashboard/approveIt</orgPath>
-      <orgName>approveItdashboardintro.html</orgName>
-    </file>
-  </files>
   <info>
     <package>
-      <name>ApproveIt</name>
-      <version>0.1.1</version>
-      <license url="http://opensource.org/licenses/MIT">MIT License</license>
-      <url>http://our.umbraco.org/projects/backoffice-extensions/approve-it</url>
+      <name><%= name %></name>
+      <version><%= version %></version>
+      <license url="<%= licenseUrl %>"><%= license %></license>
+      <url><%= url %></url>
       <requirements>
         <major>3</major>
         <minor>0</minor>
@@ -50,14 +13,10 @@
       </requirements>
     </package>
     <author>
-      <name>|create|it|</name>
-      <website>http://www.create.pt</website>
+      <name><%= author %></name>
+      <website><%= authorUrl %></website>
     </author>
-    <readme><![CDATA[Approve It
-
-Creates a section that shows all the content that is waiting approval for publishing.
-
-Find the source code at: https://github.com/ViGiLnT/ApproveIt]]></readme>
+    <readme><![CDATA[<%= readme %>]]></readme>
   </info>
   <DocumentTypes />
   <Templates />
@@ -66,6 +25,7 @@ Find the source code at: https://github.com/ViGiLnT/ApproveIt]]></readme>
   <DictionaryItems />
   <Languages />
   <DataTypes />
+  <control />
   <Actions>
     <Action runat="install" undo="true" alias="addDashboardSection" dashboardAlias="StartupApproveItDashboardSection">
       <section>
@@ -74,8 +34,8 @@ Find the source code at: https://github.com/ViGiLnT/ApproveIt]]></readme>
         </areas>
         <tab caption="Get Started">
           <control showOnce="true" addPanel="true" panelCaption="">
-    views/dashboard/approveIt/approveItdashboardintro.html
-    </control>
+            views/dashboard/approveIt/approveItdashboardintro.html
+          </control>
         </tab>
       </section>
     </Action>
@@ -96,5 +56,31 @@ Find the source code at: https://github.com/ViGiLnT/ApproveIt]]></readme>
     <Action runat="install" undo="true" alias="AddLanguageFileKey" language="ru" position="end" area="sections" key="approveIt" value="Approve It" />
     <Action runat="install" undo="true" alias="AddLanguageFileKey" language="sv" position="end" area="sections" key="approveIt" value="Approve It" />
     <Action runat="install" undo="true" alias="AddLanguageFileKey" language="zh" position="end" area="sections" key="approveIt" value="Approve It" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="en" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="pt" position="end" area="general" key="approveitupdatedBy" value="Editador por" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="cs" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="da" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="en_us" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="es" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="fr" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="he" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="it" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="ja" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="ko" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="nl" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="no" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="pl" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="ru" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="sv" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="zh" position="end" area="general" key="approveitupdatedBy" value="Updated by" />
   </Actions>
+  <files>
+  	<% files.forEach(function(file) { %>
+  	<file>
+      <guid><%= file.guid %></guid>
+      <orgPath><%= file.dir %></orgPath>
+      <orgName><%= file.name %></orgName>
+    </file>
+	<% }); %>
+  </files>
 </umbPackage>
