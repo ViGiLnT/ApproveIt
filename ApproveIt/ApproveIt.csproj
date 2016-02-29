@@ -153,6 +153,11 @@
     <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\edit.controller.js" />
     <Content Include="App_Plugins\ApproveIt\backoffice\approvalTree\edit.html" />
     <Content Include="App_Plugins\ApproveIt\approval.resource.js" />
+    <Content Include="App_Plugins\ApproveIt\Content\pickadiff\jquery.picadiff.css" />
+    <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\diff_match_patch.js" />
+    <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\diff_match_patch_extended.js" />
+    <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\jquery.pretty-text-diff.min.js" />
+    <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\picadiff.js" />
     <Content Include="Dashboard\Views\dashboard\approveIt\approveItdashboardintro.html" />
     <Content Include="Gruntfile.js" />
     <Content Include="package.xml" />
