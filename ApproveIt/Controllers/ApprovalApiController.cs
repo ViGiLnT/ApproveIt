@@ -154,7 +154,7 @@
                         {
                             Alias = alias,
                             Id = prop.Id,
-                            Name = prop.PropertyType.Name
+                            Name = prop.PropertyType.Name,
                         });
                     }
                 }
@@ -204,7 +204,9 @@
                 Name = content.Name,
                 WriterName = writer.Username,
                 WriterEmail = writer.Email,
-                UpdateDate = content.UpdateDate.ToString("F", userCulture)
+                UpdateDate = content.UpdateDate.ToString("F", userCulture),
+                CurrentValue = changeHistoryArray.LastOrDefault().CurrentValue,
+                PreviousValue = changeHistoryArray.FirstOrDefault().CurrentValue,
             };
 
             return updatedContent;

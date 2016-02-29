@@ -9,6 +9,7 @@
 	],
 
 	css: [
-		'~/App_Plugins/ApproveIt/Content/pickadiff/jquery.picadiff.css'
+		'~/App_Plugins/ApproveIt/Content/pickadiff/jquery.picadiff.css',
+		'~/App_Plugins/ApproveIt/Content/approve-it.css'
 	]
 }

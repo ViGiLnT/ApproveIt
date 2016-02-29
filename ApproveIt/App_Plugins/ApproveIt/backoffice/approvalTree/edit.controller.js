@@ -24,18 +24,4 @@
 	            notificationsService.success("Success", node.Name + " has been published");
 	        });
 	    };
-
-
-	    $scope.compare = function ($event) {
-	    
-	            $('.picadiff').picadiff({
-	                leftContent: $('#previousValue').text(),
-	                rightContent: $('#currentValue').text(),
-	                lineLength: 1000,
-	            });;
-
-	            $(".picadiff").picadiff();
-	            event.preventDefault();
-	    };
-	   
 	});

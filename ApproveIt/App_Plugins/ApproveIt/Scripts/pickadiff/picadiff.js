@@ -84,7 +84,7 @@
       };
 
       var compareData = new CompareData(referenceData, settings);
-
+  
       var lineLength = settings.lineLength;
       var html_texts = settings.wrap ? compareData.getHtmlTextStrict(lineLength) :
         compareData.getHtmlTexts(lineLength);
@@ -98,6 +98,5 @@
       $(settings.titleContainer+" "+settings.rightContainer).html(compareData.rightTitle);
     });
   };
-
 })( jQuery );
 
