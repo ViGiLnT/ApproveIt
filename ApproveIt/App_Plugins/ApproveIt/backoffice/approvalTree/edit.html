@@ -23,17 +23,6 @@
                         </div>
                     </div>
 
-                    <div class="control-group umb-control-group" ng-repeat="prop in node.Properties" ng-class="{hidelabel:property.hideLabel}">
-                        <div class="umb-el-wrap">
-                            <label class="control-label" ng-hide="property.hideLabel">
-                                {{prop.Alias}}
-                            </label>
-                            <div class="controls controls-row">
-                                <span>{{prop.AuthorName}}<br><small class="muted" ng-bind-html="prop.AuthorEmail" /></span>
-                            </div>
-                        </div>
-                    </div>
-
                     <section id="cd-timeline" class="cd-container">
                         <div class="cd-timeline-block" ng-repeat="prop in node.Properties">
                             <div class="cd-timeline-img cd-picture">
@@ -42,7 +31,7 @@
 
                             <div class="cd-timeline-content">
                                 <h2>{{prop.Alias}}</h2>
-                                <p>{{prop.AuthorName}} ({{prop.AuthorEmail}})</p>
+                                <p>{{prop.AuthorName}} (<a href="mailto:{{prop.AuthorEmail}}">{{prop.AuthorEmail}}</a>)</p>
                                 <!--<a href="#0" class="cd-read-more">Read more</a>-->
                                 <span class="cd-date">{{prop.ChangeDate}}</span>
                             </div> <!-- cd-timeline-content -->

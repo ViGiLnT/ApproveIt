@@ -237,19 +237,24 @@
         }
 
         /// <summary>
-        /// Gets the by identifier.
+        /// Gets the property by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>The content node.</returns>
-        public ApproveContent GetById(int id, string userLocale)
+        /// <param name="property">The property.</param>
+        /// <param name="userLocale">The user locale.</param>
+        /// <returns>
+        /// The content node.
+        /// </returns>
+        public ApproveContent GetPropertyById(int id, string property, string userLocale)
         {
             // Get the Umbraco db
             var db = ApplicationContext.DatabaseContext.Database;
 
             // Gets the content being visualized from the approveit DB
             IList<ChangeHistory> changeHistoryArray = db.Fetch<ChangeHistory>(
-                string.Format("SELECT * FROM {0} WHERE [nodeId]=@0", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE),
-                id);
+                string.Format("SELECT * FROM {0} WHERE [nodeId]=@0 AND [propertyAlias]=@1", Settings.APPROVE_IT_CHANGE_HISTORY_TABLE),
+                id,
+                property);
 
             // Get content being visualized
             IContent content = ApplicationContext.Services.ContentService.GetById(id);
@@ -267,7 +272,7 @@
                 WriterEmail = writer.Email,
                 UpdateDate = content.UpdateDate.ToString("F", userCulture),
                 CurrentValue = changeHistoryArray.LastOrDefault().CurrentValue,
-                PreviousValue = changeHistoryArray.FirstOrDefault().CurrentValue,
+                PreviousValue = changeHistoryArray.FirstOrDefault().PreviousValue,
             };
 
             return updatedContent;

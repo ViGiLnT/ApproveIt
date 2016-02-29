@@ -11,7 +11,7 @@
 	    }
         else{
 	        //get a content id -> service
-	        approvalResource.getById(parentId, $scope.user.locale).then(function (response) {
+	        approvalResource.getPropertyById(parentId, $routeParams.id, $scope.user.locale).then(function (response) {
 	            $scope.node = response.data;
 	            $scope.loaded = true;
 	        });
