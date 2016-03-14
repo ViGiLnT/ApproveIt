@@ -36,33 +36,6 @@ Modules - reusable parts of our design
   clear: both;
 }
 
-/* -------------------------------- 
-
-Main components 
-
--------------------------------- */
-/*header {
-  height: 200px;
-  line-height: 200px;
-  text-align: center;
-  background: #303e49;
-}
-header h1 {
-  color: white;
-  font-size: 18px;
-  font-size: 1.125rem;
-}
-@media only screen and (min-width: 1170px) {
-  header {
-    height: 300px;
-    line-height: 300px;
-  }
-  header h1 {
-    font-size: 24px;
-    font-size: 1.5rem;
-  }
-}*/
-
 #cd-timeline {
   position: relative;
   padding: 2em 0;
@@ -236,7 +209,7 @@ header h1 {
   display: table;
   clear: both;
 }
-.cd-timeline-content h2 {
+.cd-timeline-content h4 {
   color: #303e49;
 }
 .cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
@@ -249,6 +222,15 @@ header h1 {
 .cd-timeline-content p {
   margin: 1em 0;
   line-height: 1.6;
+}
+.cd-timeline-content a {
+  font-style: italic;
+}
+.cd-timeline-content h4 span {
+  font-weight: bold;
+}
+.cd-timeline-content p span {
+  font-weight: bold;
 }
 .cd-timeline-content .cd-read-more {
   float: right;
@@ -292,7 +274,7 @@ header h1 {
 @media only screen and (min-width: 1170px) {
   .cd-timeline-content {
     margin-left: 0;
-    padding: 1.6em;
+    /*padding: 1.6em;*/
     width: 45%;
   }
   .cd-timeline-content::before {

@@ -1,9 +1,9 @@
-﻿#antesDepois .right{
+﻿#beforeAfter .right{
     margin-left: 50%;
     font-weight: bold;
     color: green;
 }
-#antesDepois .left{
+#beforeAfter .left{
     float: left;
     font-weight: bold;
     color: red;

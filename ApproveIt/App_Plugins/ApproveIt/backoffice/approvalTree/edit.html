@@ -8,6 +8,20 @@
             <div class="span7">
                 <h1 class="umb-headline" placeholder="@placeholders_entername" ng-bind-html="node.Name" />
             </div>
+            <div class="span4">
+                <div class="btn-toolbar umb-btn-toolbar">
+                    <div class="btn-group">
+                        <a class="btn" ng-href="#/content/content/edit/{{node.Id}}">
+                            <localize key="general_show">Show</localize>
+                        </a>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit" data-hotkey="ctrl+s" class="btn btn-success">
+                            <localize key="actions_publish">Publish</localize>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </umb-header>
         <div class="umb-panel-body umb-scrollable row-fluid">
             <div class="tab-content form-horizontal" style="padding-bottom: 90px">
@@ -30,8 +44,8 @@
                             </div> <!-- cd-timeline-img -->
 
                             <div class="cd-timeline-content">
-                                <h2>{{prop.Alias}}</h2>
-                                <p>{{prop.AuthorName}} (<a href="mailto:{{prop.AuthorEmail}}">{{prop.AuthorEmail}}</a>)</p>
+                                <h4><span>Content name:</span> {{prop.Alias}}</h4>
+                                <p><span>Updated by:</span> {{prop.AuthorName}} (<a href="mailto:{{prop.AuthorEmail}}">{{prop.AuthorEmail}}</a>)</p>
                                 <!--<a href="#0" class="cd-read-more">Read more</a>-->
                                 <span class="cd-date">{{prop.ChangeDate}}</span>
                             </div> <!-- cd-timeline-content -->

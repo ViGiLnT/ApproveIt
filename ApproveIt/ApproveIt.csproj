@@ -157,7 +157,6 @@
     <Content Include="App_Plugins\ApproveIt\approval.resource.js" />
     <Content Include="App_Plugins\ApproveIt\Content\approve-it.css" />
     <Content Include="App_Plugins\ApproveIt\Content\pickadiff\jquery.picadiff.css" />
-    <Content Include="App_Plugins\ApproveIt\Content\vertical-timeline\css\reset.css" />
     <Content Include="App_Plugins\ApproveIt\Content\vertical-timeline\css\style.css" />
     <Content Include="App_Plugins\ApproveIt\Content\vertical-timeline\img\cd-icon-location.svg" />
     <Content Include="App_Plugins\ApproveIt\Content\vertical-timeline\img\cd-icon-movie.svg" />
