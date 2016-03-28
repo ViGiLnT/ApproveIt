@@ -58,15 +58,5 @@
         /// The changed properties.
         /// </value>
         public IList<ApproveProperty> ChangedProperties { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Previous Value
-        /// </summary>
-        public string PreviousValue { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Current Value
-        /// </summary>
-        public string CurrentValue { get; set; }
     }
 }

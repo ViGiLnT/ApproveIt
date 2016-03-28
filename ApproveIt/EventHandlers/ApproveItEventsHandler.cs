@@ -90,6 +90,7 @@
                         newChange.UpdatedBy = user.Username;
                         newChange.PreviousValue = originalProp.Value.ToString();
                         newChange.CurrentValue = dirtyProp.Value.ToString();
+                        newChange.PropertyTypeAlias = dirtyProp.PropertyType.PropertyEditorAlias;
 
                         db.Insert(newChange);
                     }

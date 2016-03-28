@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
+                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}" ng-if="typeof node.currentImage == 'undefined'">
                         <div class="umb-el-wrap">
                             <label class="control-label" ng-hide="property.hideLabel">
                                 Changes
@@ -64,7 +64,30 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}" ng-if="typeof node.currentImage != 'undefined'">
+                        <div class="umb-el-wrap">
+                            <label class="control-label" ng-hide="property.hideLabel">
+                                Changes
+                            </label>
+                            <div class="controls controls-row">
+                                <div id="beforeAfter">
+                                    <div class="left">Antes</div>
+                                    <div class="right">Depois</div>
+                                </div>
                             </div>
+                            <div class="controls controls-row">
+                                <umb-image-thumbnail width="{{width}}"
+                                                     height="{{height}}"
+                                                     src="{{node.oldImage}}"
+                                                     max-size="100" />
+                                <umb-image-thumbnail width="{{width}}"
+                                                     height="{{height}}"
+                                                     src="{{node.currentImage}}"
+                                                     max-size="100" />
+                            </div>
+                        </div>
                     </div>
                     <!--<div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}">
                         <div class="controls controls-row">

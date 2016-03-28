@@ -229,8 +229,14 @@ Modules - reusable parts of our design
 .cd-timeline-content h4 span {
   font-weight: bold;
 }
+.cd-timeline-content h4 {
+  font-size: 16px;
+}
 .cd-timeline-content p span {
   font-weight: bold;
+}
+.cd-timeline-content p {
+  font-size: 14px;
 }
 .cd-timeline-content .cd-read-more {
   float: right;
@@ -262,7 +268,7 @@ Modules - reusable parts of our design
     font-size: 20px;
     font-size: 1.25rem;
   }
-  .cd-timeline-content p {
+  .cd-timeline-content p, cd-timeline-content h4 {
     font-size: 16px;
     font-size: 1rem;
   }

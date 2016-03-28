@@ -53,6 +53,15 @@
         public string PropertyAlias { get; set; }
 
         /// <summary>
+        /// Gets or sets the property type alias.
+        /// </summary>
+        /// <value>
+        /// The property type alias.
+        /// </value>
+        [Column("propertyTypeAlias")]
+        public string PropertyTypeAlias { get; set; }
+
+        /// <summary>
         /// Gets or sets the update date.
         /// </summary>
         /// <value>

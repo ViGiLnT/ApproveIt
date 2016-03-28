@@ -245,7 +245,7 @@
         /// <returns>
         /// The content node.
         /// </returns>
-        public ApproveContent GetPropertyById(int id, string property, string userLocale)
+        public ApproveProperty GetPropertyById(int id, string property, string userLocale)
         {
             // Get the Umbraco db
             var db = ApplicationContext.DatabaseContext.Database;
@@ -264,7 +264,7 @@
 
             CultureInfo userCulture = new CultureInfo(userLocale);
 
-            ApproveContent updatedContent = new ApproveContent()
+            ApproveProperty updatedContent = new ApproveProperty()
             {
                 Id = content.Id,
                 Name = content.Name,
@@ -273,6 +273,7 @@
                 UpdateDate = content.UpdateDate.ToString("F", userCulture),
                 CurrentValue = changeHistoryArray.LastOrDefault().CurrentValue,
                 PreviousValue = changeHistoryArray.FirstOrDefault().PreviousValue,
+                PropertyTypeAlias = changeHistoryArray.LastOrDefault().PropertyTypeAlias
             };
 
             return updatedContent;

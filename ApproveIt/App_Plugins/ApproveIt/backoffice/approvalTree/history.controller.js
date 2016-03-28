@@ -1,5 +1,5 @@
 ﻿angular.module("umbraco").controller("Approval.ApprovalHistoryController",
-	function ($scope, $routeParams, approvalResource, notificationsService, navigationService, userService) {
+	function ($scope, $routeParams, approvalResource, notificationsService, navigationService, userService, mediaResource) {
 
 	    $scope.loaded = false;
 	    var parentId = $scope.$parent.menuNode.parentId;
@@ -14,6 +14,15 @@
 	        approvalResource.getPropertyById(parentId, $routeParams.id, $scope.user.locale).then(function (response) {
 	            $scope.node = response.data;
 	            $scope.loaded = true;
+
+	            if ($scope.node.PropertyTypeAlias.indexOf('MultipleMediaPicker') !== -1) {
+	                mediaResource.getById($scope.node.PreviousValue).then(function (media) {
+	                    $scope.node.oldImage = media;
+	                });
+	                $scope.node.newImageLink = mediaResource.getById($scope.node.CurrentValue).then(function (media) {
+	                    $scope.node.currentImage = media;
+	                });
+	            }
 	        });
 	    }   
 
