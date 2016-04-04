@@ -157,6 +157,8 @@
     <Content Include="App_Plugins\ApproveIt\approval.resource.js" />
     <Content Include="App_Plugins\ApproveIt\Content\approve-it.css" />
     <Content Include="App_Plugins\ApproveIt\Content\pickadiff\jquery.picadiff.css" />
+    <Content Include="App_Plugins\ApproveIt\Content\twentytwenty\foundation.css" />
+    <Content Include="App_Plugins\ApproveIt\Content\twentytwenty\twentytwenty.css" />
     <Content Include="App_Plugins\ApproveIt\Content\vertical-timeline\css\style.css" />
     <Content Include="App_Plugins\ApproveIt\Content\vertical-timeline\img\cd-icon-location.svg" />
     <Content Include="App_Plugins\ApproveIt\Content\vertical-timeline\img\cd-icon-movie.svg" />
@@ -165,6 +167,8 @@
     <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\diff_match_patch_extended.js" />
     <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\jquery.pretty-text-diff.min.js" />
     <Content Include="App_Plugins\ApproveIt\Scripts\pickadiff\picadiff.js" />
+    <Content Include="App_Plugins\ApproveIt\Scripts\twentytwenty\jquery.event.move.js" />
+    <Content Include="App_Plugins\ApproveIt\Scripts\twentytwenty\jquery.twentytwenty.js" />
     <Content Include="App_Plugins\ApproveIt\Scripts\vertical-timeline\main.js" />
     <Content Include="App_Plugins\ApproveIt\Scripts\vertical-timeline\modernizr.js" />
     <Content Include="Dashboard\Views\dashboard\approveIt\approveItdashboardintro.html" />

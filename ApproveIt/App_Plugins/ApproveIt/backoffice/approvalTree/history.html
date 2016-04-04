@@ -1,6 +1,7 @@
 ﻿<form name="contentForm"
       ng-controller="Approval.ApprovalHistoryController"
       ng-show="loaded"
+      ng-init="setup"
       ng-submit="publish(node)"
       val-form-manager>
     <umb-panel>
@@ -45,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}" ng-if="typeof node.currentImage == 'undefined'">
+                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}" ng-if="node.currentImage === undefined">
                         <div class="umb-el-wrap">
                             <label class="control-label" ng-hide="property.hideLabel">
                                 Changes
@@ -66,26 +67,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}" ng-if="typeof node.currentImage != 'undefined'">
+                    <div class="control-group umb-control-group" ng-class="{hidelabel:property.hideLabel}" ng-if="node.currentImage !== undefined">
                         <div class="umb-el-wrap">
                             <label class="control-label" ng-hide="property.hideLabel">
                                 Changes
                             </label>
                             <div class="controls controls-row">
-                                <div id="beforeAfter">
-                                    <div class="left">Antes</div>
-                                    <div class="right">Depois</div>
+                                <div id="imagesBeforeAfter">
+                                    <div class="left">
+                                        <div>Antes</div>
+                                        <img ng-src="{{node.oldImage.metaData.umbracoFile.Value.src}}" width="400" class="left">
+                                    </div>
+                                    <div class="right">
+                                        <div>Depois</div>
+                                        <img ng-src="{{node.currentImage.metaData.umbracoFile.Value.src}}" width="400" class="right">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="controls controls-row">
-                                <umb-image-thumbnail width="{{width}}"
-                                                     height="{{height}}"
-                                                     src="{{node.oldImage}}"
-                                                     max-size="100" />
-                                <umb-image-thumbnail width="{{width}}"
-                                                     height="{{height}}"
-                                                     src="{{node.currentImage}}"
-                                                     max-size="100" />
                             </div>
                         </div>
                     </div>
@@ -96,8 +93,8 @@
                     </div>-->   
                     <p>{{callUpdate()}}</p>           
                         <div class="umb-tab-buttons" detect-fold>
-                            <div class="btn-group">
-                                <div class="btn" ng-click=" compare()">Compare</div>
+                            <div class="btn-group" ng-show="node.currentImage === undefined">
+                                <div class="btn" ng-click="compare()">Compare</div>
                             </div>
                             <div class="btn-group">
                                 <a class="btn" ng-href="#/content/content/edit/{{node.Id}}">

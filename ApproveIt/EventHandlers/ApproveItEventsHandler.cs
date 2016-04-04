@@ -92,6 +92,13 @@
                         newChange.CurrentValue = dirtyProp.Value.ToString();
                         newChange.PropertyTypeAlias = dirtyProp.PropertyType.PropertyEditorAlias;
 
+                        //if (dirtyProp.PropertyType.PropertyEditorAlias.Contains("MultipleMediaPicker"))
+                        //{
+                        //    UmbracoHelper helper = new UmbracoHelper();
+                        //    dynamic media = helper.Media(int.Parse(dirtyProp.Value.ToString()));
+                        //    string imageUrl = UmbracoContext.Current.Application.Services.MediaService.GetById(int.Parse(dirtyProp.Value.ToString())).Path;
+                        //}                        
+
                         db.Insert(newChange);
                     }
                 }
