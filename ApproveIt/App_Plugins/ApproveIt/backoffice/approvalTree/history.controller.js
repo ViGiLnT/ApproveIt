@@ -23,9 +23,14 @@
 	                    entityResource.getById($scope.node.CurrentValue, "Media").then(function (media) {
 	                        $scope.node.currentImage = media;
 	                    });
+	                    $scope.node.type = 'image';
+	                }
+	                else if ($scope.node.PropertyTypeAlias.indexOf('Grid') !== -1) {
+	                    $scope.node.type = 'grid';
 	                }
 	                else {
 	                    $scope.node.currentImage = undefined;
+	                    $scope.node.type = 'text';
 	                }
 	            });
 	        }
