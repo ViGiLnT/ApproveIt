@@ -8,3 +8,11 @@
     font-weight: bold;
     color: red;
 }
+
+.grid-compare .right{
+    margin-left: 50%;
+}
+.grid-compare .left{
+    float: left;
+    width: 50%
+}

@@ -27,6 +27,8 @@
 	                }
 	                else if ($scope.node.PropertyTypeAlias.indexOf('Grid') !== -1) {
 	                    $scope.node.type = 'grid';
+	                    $scope.node.PreviousValue = JSON.parse($scope.node.PreviousValue);
+	                    $scope.node.CurrentValue = JSON.parse($scope.node.CurrentValue);
 	                }
 	                else {
 	                    $scope.node.currentImage = undefined;
